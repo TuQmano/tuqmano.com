@@ -1,0 +1,1139 @@
+---
+title: polaR on CRAN
+author: TuQmano
+date: '2020-05-22'
+slug: empaquetar
+categories: [R, polAr]
+tags: [R, CRAN, polAr, geofacetAr]
+---
+
+
+
+<p>Publicaron en CRAN una primera versión del paquete <a href="https://electorarg.github.io/polAr/">polAr</a>: <em>-POLítica ARgentina usando R</em>. En este post intentaré detallar un poco más el proceso de trabajo con el que llegamos hasta acá y, como yapa, el de <a href="https://electorarg.github.io/geofaceteAR/">geofaceteAr</a>.</p>
+<div id="polar" class="section level2">
+<h2>polAr</h2>
+{{% tweet "1261597845808975872" %}}
+<p>La idea del paquete es brindar herramientas que faciliten el flujo de trabajo del análisis político - electoral y el acceso a datos de Argentina usando <code>R</code>. Podriamos dividir las funciones de esta primera versión en tres familias: <em>(i) datos</em>, <em>(ii) indicadores</em> y <em>(iii) visualización</em>:</p>
+<div id="datos" class="section level3">
+<h3>datos</h3>
+<p>El paquete no incluye datos, sino que funciona como motor de búsqueda y descarga desde un repositorio alternativo. La idea detrás de ello es que funcione de modo indpendiente, que ésta pudiera ser aumentada o modificada sin efectos directos sobre el paquete. En una próxima publicación intetnaré avanzar sobre la documentación de este repositorio y un proceo de chequeo de información.</p>
+<p>La principal fuente de información es el siempre útil <a href="https://www.andytow.com/"><em>Atlas Electoral de Andy Tow</em></a>. Sitio que, además de ser la fuente de tabulados electorales más completa que existe en Argentina, disponibiliza las bases con los datos desagregados publicados por los escrutinios provisorios desde el año 2003 en adelante.</p>
+<p>El primer paso de lo acá compartido fue el procesamiento de esas bases de datos y el armado de un repositorio propio que me facilitara el trabajo de llamado de elecciones. En resumen: transformamos archivos <code>.mdb</code> (formato para tablas relacionles de <em>Microsoft Acces</em>) en <code>sqlite</code> para cada año electoral e hicimos consultas a esas basese de datos para obtener un archivo <code>.csv</code> para cada elección con una estrcutura así: <code>distrito_categoria_turno_año.csv</code>.</p>
+<p>Solo para las elecciones del proceso electoral de 2019 trabajamos con datos compartidos por <em>pmoracho</em> en <a href="https://github.com/pmoracho"><em>github</em></a>. Algo más de detalle del estado actual de todo esto esta disponible en el repositorio <a href="https://github.com/electorArg/PolAr_Data"><code>PolAr_Data</code></a>.</p>
+<p>Al día de hoy el repositorio cuenta con 425 archvios de elecciones para las catgorías a Presidente, Diputades y Senadores Nacionales, para elecciones generales, primarias (P.A.S.O.) y balotaje presidencial.</p>
+<p>Con <code>show_available_elections()</code> accedemos a un índice con la información disponible que podemos descargar:</p>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
+## Using compatibility `.name_repair`.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 425 x 5
+##    district category round  year  NOMBRE   
+##    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 arg      presi    balota 2015  ARGENTINA
+##  2 arg      presi    gral   2003  ARGENTINA
+##  3 arg      presi    gral   2007  ARGENTINA
+##  4 arg      presi    gral   2011  ARGENTINA
+##  5 arg      presi    gral   2015  ARGENTINA
+##  6 arg      presi    gral   2019  ARGENTINA
+##  7 arg      presi    paso   2011  ARGENTINA
+##  8 arg      presi    paso   2015  ARGENTINA
+##  9 arg      presi    paso   2019  ARGENTINA
+## 10 caba     dip      gral   2005  CABA     
+## # ... with 415 more rows</code></pre>
+<p>Tomando los parámetros de la tabla anterior con el siguiente comando podemos completar los campos obligatorios para obtener los datos, en este caso de la elección general para presidente de 2019.</p>
+<pre class="r"><code>arg19 &lt;- get_election_data(district = &quot;arg&quot;,
+                  category = &quot;presi&quot;,
+                  round = &quot;gral&quot;, 
+                  year = 2019)
+
+arg19</code></pre>
+<pre><code>## # A tibble: 192 x 8
+## # Groups:   codprov [24]
+##    category round  year codprov name_prov    electores listas    votos
+##    &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1 presi    gral   2019 01      CABA                 0 00024    128795
+##  2 presi    gral   2019 01      CABA                 0 00036     58040
+##  3 presi    gral   2019 01      CABA                 0 00037    707158
+##  4 presi    gral   2019 01      CABA                 0 00039     13559
+##  5 presi    gral   2019 01      CABA                 0 00050   1039750
+##  6 presi    gral   2019 01      CABA                 0 00108     37404
+##  7 presi    gral   2019 01      CABA                 0 blancos   30542
+##  8 presi    gral   2019 01      CABA                 0 nulos         0
+##  9 presi    gral   2019 02      BUENOS AIRES         0 00024    610009
+## 10 presi    gral   2019 02      BUENOS AIRES         0 00036    260597
+## # ... with 182 more rows</code></pre>
+<p><code>arg19</code> es un <em>tibble</em> de <span class="math inline">\(192\)</span> filas y 8 variables. Las filas son el producto de 8 filas únicas por provincia (los 24 grupos) con la cantidad de votos obtenidos por las distintas opciones electorales en este turno, categoría y año.</p>
+<p>En este <a href="https://electorarg.github.io/polAr/articles/data.html">artículo</a> se puede encontrar más detalles de la función.</p>
+<hr />
+</div>
+<div id="indicadores" class="section level3">
+<h3>indicadores</h3>
+<p>El acceso a la información es quizás la función princiapl de <code>polAr</code>, la cual permitirá a usuaries trabajar con los datos como quieran. Pero el paquete incopora además funciones para realizar cálculos de interés para el análisis político. Esta primera versión solamente incluye dos varianes: <code>compute_nep()</code>, que devulelve el <em>Número Efectivo de Partidos</em> (según dos fórmulas distintas) y <code>compute_cometitiveness()</code>, que calcula el nivel de competencia de una elección determinada.</p>
+<pre class="r"><code>arg19 %&gt;% 
+  compute_competitiveness() %&gt;% 
+  print(n= 24)</code></pre>
+<pre><code>## # A tibble: 24 x 2
+##    codprov competitividad
+##    &lt;chr&gt;            &lt;dbl&gt;
+##  1 01               0.835
+##  2 02               0.841
+##  3 03               0.785
+##  4 04               0.685
+##  5 05               0.915
+##  6 06               0.801
+##  7 07               0.779
+##  8 08               0.998
+##  9 09               0.636
+## 10 10               0.954
+## 11 11               0.877
+## 12 12               0.974
+## 13 13               0.879
+## 14 14               0.767
+## 15 15               0.900
+## 16 16               0.721
+## 17 17               0.869
+## 18 18               0.823
+## 19 19               0.965
+## 20 20               0.692
+## 21 21               0.991
+## 22 22               0.441
+## 23 23               0.763
+## 24 24               0.694</code></pre>
+<p>Este <a href="https://electorarg.github.io/polAr/articles/compute.html">artículo</a> del paquete tiene algo más de detalle.</p>
+<hr />
+</div>
+<div id="visualización" class="section level3">
+<h3>visualización</h3>
+<p>Por último <code>polAr</code> incluye un par funciones que ayudan a visualizar rápidamente las elecciones de manera resumida. Una primera alternativa es generar tabulados con los resultados agregados de un comicio:</p>
+<pre><code>arg19 %&gt;% 
+  get_names() %&gt;% 
+  tabulate_results()</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#xnracshefq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xnracshefq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xnracshefq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xnracshefq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xnracshefq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnracshefq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xnracshefq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xnracshefq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xnracshefq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xnracshefq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xnracshefq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xnracshefq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xnracshefq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xnracshefq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xnracshefq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xnracshefq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xnracshefq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#xnracshefq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnracshefq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#xnracshefq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnracshefq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xnracshefq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xnracshefq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnracshefq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xnracshefq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xnracshefq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xnracshefq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xnracshefq .gt_left {
+  text-align: left;
+}
+
+#xnracshefq .gt_center {
+  text-align: center;
+}
+
+#xnracshefq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xnracshefq .gt_font_normal {
+  font-weight: normal;
+}
+
+#xnracshefq .gt_font_bold {
+  font-weight: bold;
+}
+
+#xnracshefq .gt_font_italic {
+  font-style: italic;
+}
+
+#xnracshefq .gt_super {
+  font-size: 65%;
+}
+
+#xnracshefq .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="xnracshefq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="2" class="gt_heading gt_title gt_font_normal" style>Argentina - 2019</th>
+    </tr>
+    <tr>
+      <th colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Elección General - Presidente de la Nación</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Lista</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Votos</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">00037-FRENTE DE TODOS</td>
+      <td class="gt_row gt_right">47.4&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">00050-JUNTOS POR EL CAMBIO</td>
+      <td class="gt_row gt_right">39.8&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">00024-CONSENSO FEDERAL</td>
+      <td class="gt_row gt_right">6.1&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">00036-FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD</td>
+      <td class="gt_row gt_right">2.1&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">00039-FRENTE NOS</td>
+      <td class="gt_row gt_right">1.7&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">blancos</td>
+      <td class="gt_row gt_right">1.5&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">00108-UNITE POR LA LIBERTAD Y LA DIGNIDAD</td>
+      <td class="gt_row gt_right">1.5&percnt;</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">nulos</td>
+      <td class="gt_row gt_right">0.0&percnt;</td>
+    </tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="2"><strong>Fuente:</strong> polAr - Política Argentina usando R - <em>https://electorarg.github.io/polAr</em></td>
+    </tr>
+  </tfoot>
+  
+</table></div>
+<p>Otra alternativa es analizarlos de manera gráfica<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<pre><code>arg19 %&gt;% 
+  get_names() %&gt;% 
+  plot_results(national = T)</code></pre>
+<p><img src="/post/2020-05-22-empaquetar_files/figure-html/plot-1.png" width="672" /></p>
+<p>Ambas funciones requieren utilizar primero <code>get_names</code> en la versión de CRAN. Esta es una función auxiliar para vincular la base de datos de resultados con los nombres de las listas que compiten.</p>
+<p>La versión en desarrollo elimina ese paso intermedio para los casos por defecto de obtención de datos (con fomato <code>long</code>) pero sigue funcionando para los casos en que los datos de la elección fueron descargados <code>wide</code>.</p>
+<p>Puede notarse que <code>plot_results()</code> fue llamado con un parámatro <code>national = TRUE</code>. De esta manera, para elecciones a presidente, el gráfico resultante muestra el agregado de votos al nivel del distrito que se elige el cargo. Si, en cambio, no especificamos nada, el parámetro <code>FALSE</code> por defecto nos devolverá los resultados a nivel de provncias en grillas <em>cómo si fueran mapas</em>. De igual modo, si descargamos una elección a nivel departamental, <code>plot_results()</code>automáticamente graficará los resultados con <code>geofacetAR</code>.</p>
+<pre class="r"><code>get_election_data(district = &quot;caba&quot;,
+                  category = &quot;dip&quot;, 
+                  round = &quot;paso&quot; , 
+                  year = 2019 , 
+                  level = &quot;departamento&quot;) %&gt;% 
+  plot_results()</code></pre>
+<p><img src="/post/2020-05-22-empaquetar_files/figure-html/geofaceteAR-1.png" width="672" /></p>
+<p><strong>RESUMIENDO</strong></p>
+{{% tweet "1263618240938496000" %}}
+<hr />
+</div>
+</div>
+<div id="gofacetear" class="section level2">
+<h2>gofaceteAr</h2>
+<p><img src="https://github.com/electorArg/geofaceteAR/blob/master/hex/ggplot2.png?raw=true" width="200"></p>
+<p>Lo anterior es posible gracias a otro paquete, disponible para descarga desde un repositorio de <em>github</em>. <code>geofaceteAr</code> es una extensión local del paquete <code>geofacet</code> de Ryan Haffen. El empaquetado fue el resultado de ordenar la aplicación para Argentina de esta técnica de acomodar las grillas de <code>ggplot2</code> como si fueran mapas, originalmente presentadas en <code>LatinR</code> 2018.</p>
+<p>Éste carga el paquete <code>geofacet</code> y agrega funciones de utilidad para la <em>geografía</em> argentina. La priemra de ellas es <code>show_arg_codes()</code>que muestra un diccionario de grillas con el <em>id</em> correspondiente para descarga y equivalencias de los <em>id</em> correspodientes a los diferentes distritos.</p>
+<pre class="r"><code>library(geofaceteAR)
+
+show_arg_codes()</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zhkdjanqdh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zhkdjanqdh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zhkdjanqdh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zhkdjanqdh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zhkdjanqdh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zhkdjanqdh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zhkdjanqdh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zhkdjanqdh .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zhkdjanqdh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zhkdjanqdh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zhkdjanqdh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zhkdjanqdh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zhkdjanqdh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#zhkdjanqdh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhkdjanqdh .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhkdjanqdh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zhkdjanqdh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zhkdjanqdh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zhkdjanqdh .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zhkdjanqdh .gt_left {
+  text-align: left;
+}
+
+#zhkdjanqdh .gt_center {
+  text-align: center;
+}
+
+#zhkdjanqdh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zhkdjanqdh .gt_font_normal {
+  font-weight: normal;
+}
+
+#zhkdjanqdh .gt_font_bold {
+  font-weight: bold;
+}
+
+#zhkdjanqdh .gt_font_italic {
+  font-style: italic;
+}
+
+#zhkdjanqdh .gt_super {
+  font-size: 65%;
+}
+
+#zhkdjanqdh .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="zhkdjanqdh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Diccionario de equivalencias para identificadores geogrficos</strong></th>
+    </tr>
+    <tr>
+      <th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>Argentina - Nivel Provincial</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_center gt_columns_bottom_border" rowspan="2" colspan="1">ID grilla</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1">
+        <span class="gt_column_spanner">INDRA</span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1">
+        <span class="gt_column_spanner">INDEC</span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner">ISO</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">codprov</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">codprov_censo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">codprov_iso</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">name_iso</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">ARGENTINA</td>
+      <td class="gt_row gt_left"> </td>
+      <td class="gt_row gt_left"> </td>
+      <td class="gt_row gt_left">AR</td>
+      <td class="gt_row gt_left">Argentina</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CABA</td>
+      <td class="gt_row gt_left">01</td>
+      <td class="gt_row gt_left">02</td>
+      <td class="gt_row gt_left">AR-C</td>
+      <td class="gt_row gt_left">Ciudad Autónoma de Buenos Aires</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">BUENOS AIRES</td>
+      <td class="gt_row gt_left">02</td>
+      <td class="gt_row gt_left">06</td>
+      <td class="gt_row gt_left">AR-B</td>
+      <td class="gt_row gt_left">Buenos Aires</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CATAMARCA</td>
+      <td class="gt_row gt_left">03</td>
+      <td class="gt_row gt_left">10</td>
+      <td class="gt_row gt_left">AR-K</td>
+      <td class="gt_row gt_left">Catamarca</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CORDOBA</td>
+      <td class="gt_row gt_left">04</td>
+      <td class="gt_row gt_left">14</td>
+      <td class="gt_row gt_left">AR-X</td>
+      <td class="gt_row gt_left">Córdoba</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CORRIENTES</td>
+      <td class="gt_row gt_left">05</td>
+      <td class="gt_row gt_left">18</td>
+      <td class="gt_row gt_left">AR-W</td>
+      <td class="gt_row gt_left">Corrientes</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CHACO</td>
+      <td class="gt_row gt_left">06</td>
+      <td class="gt_row gt_left">22</td>
+      <td class="gt_row gt_left">AR-H</td>
+      <td class="gt_row gt_left">Chaco</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CHUBUT</td>
+      <td class="gt_row gt_left">07</td>
+      <td class="gt_row gt_left">26</td>
+      <td class="gt_row gt_left">AR-U</td>
+      <td class="gt_row gt_left">Chubut</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ENTRE RIOS</td>
+      <td class="gt_row gt_left">08</td>
+      <td class="gt_row gt_left">30</td>
+      <td class="gt_row gt_left">AR-E</td>
+      <td class="gt_row gt_left">Entre Ríos</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">FORMOSA</td>
+      <td class="gt_row gt_left">09</td>
+      <td class="gt_row gt_left">34</td>
+      <td class="gt_row gt_left">AR-P</td>
+      <td class="gt_row gt_left">Formosa</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">JUJUY</td>
+      <td class="gt_row gt_left">10</td>
+      <td class="gt_row gt_left">38</td>
+      <td class="gt_row gt_left">AR-Y</td>
+      <td class="gt_row gt_left">Jujuy</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">LA PAMPA</td>
+      <td class="gt_row gt_left">11</td>
+      <td class="gt_row gt_left">42</td>
+      <td class="gt_row gt_left">AR-L</td>
+      <td class="gt_row gt_left">La Pampa</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">LA RIOJA</td>
+      <td class="gt_row gt_left">12</td>
+      <td class="gt_row gt_left">46</td>
+      <td class="gt_row gt_left">AR-F</td>
+      <td class="gt_row gt_left">La Rioja</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">MENDOZA</td>
+      <td class="gt_row gt_left">13</td>
+      <td class="gt_row gt_left">50</td>
+      <td class="gt_row gt_left">AR-M</td>
+      <td class="gt_row gt_left">Mendoza</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">MISIONES</td>
+      <td class="gt_row gt_left">14</td>
+      <td class="gt_row gt_left">54</td>
+      <td class="gt_row gt_left">AR-N</td>
+      <td class="gt_row gt_left">Misiones</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">NEUQUEN</td>
+      <td class="gt_row gt_left">15</td>
+      <td class="gt_row gt_left">58</td>
+      <td class="gt_row gt_left">AR-Q</td>
+      <td class="gt_row gt_left">Neuquén</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">RIO NEGRO</td>
+      <td class="gt_row gt_left">16</td>
+      <td class="gt_row gt_left">62</td>
+      <td class="gt_row gt_left">AR-R</td>
+      <td class="gt_row gt_left">Río Negro</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SALTA</td>
+      <td class="gt_row gt_left">17</td>
+      <td class="gt_row gt_left">66</td>
+      <td class="gt_row gt_left">AR-A</td>
+      <td class="gt_row gt_left">Salta</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SAN JUAN</td>
+      <td class="gt_row gt_left">18</td>
+      <td class="gt_row gt_left">70</td>
+      <td class="gt_row gt_left">AR-J</td>
+      <td class="gt_row gt_left">San Juan</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SAN LUIS</td>
+      <td class="gt_row gt_left">19</td>
+      <td class="gt_row gt_left">74</td>
+      <td class="gt_row gt_left">AR-D</td>
+      <td class="gt_row gt_left">San Luis</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SANTA CRUZ</td>
+      <td class="gt_row gt_left">20</td>
+      <td class="gt_row gt_left">78</td>
+      <td class="gt_row gt_left">AR-Z</td>
+      <td class="gt_row gt_left">Santa Cruz</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SANTA FE</td>
+      <td class="gt_row gt_left">21</td>
+      <td class="gt_row gt_left">82</td>
+      <td class="gt_row gt_left">AR-S</td>
+      <td class="gt_row gt_left">Santa Fe</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">SANTIAGO DEL ESTERO</td>
+      <td class="gt_row gt_left">22</td>
+      <td class="gt_row gt_left">86</td>
+      <td class="gt_row gt_left">AR-G</td>
+      <td class="gt_row gt_left">Santiago del Estero</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">TUCUMAN</td>
+      <td class="gt_row gt_left">23</td>
+      <td class="gt_row gt_left">90</td>
+      <td class="gt_row gt_left">AR-T</td>
+      <td class="gt_row gt_left">Tucumán</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">TIERRA DEL FUEGO</td>
+      <td class="gt_row gt_left">24</td>
+      <td class="gt_row gt_left">94</td>
+      <td class="gt_row gt_left">AR-V</td>
+      <td class="gt_row gt_left">Tierra del Fuego</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">AGLOMERADOS</td>
+      <td class="gt_row gt_left"> </td>
+      <td class="gt_row gt_left"> </td>
+      <td class="gt_row gt_left">AR</td>
+      <td class="gt_row gt_left">Aglomerados Urbanos - EPH (INDEC)</td>
+    </tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="5"><strong>Fuente:</strong> geofaceteAR  - <em>https://electorarg.github.io/geofaceteAR</em></td>
+    </tr>
+  </tfoot>
+  
+</table></div>
+<p>Usamos la función <code>get_grid()</code> para llamar una grilla disponible en la tabla anterior. Y <code>grid_preview()</code> si queremos ver el diseño de la grilla.</p>
+<pre class="r"><code>get_grid(&quot;TUCUMAN&quot;) </code></pre>
+<pre><code>##    name_provincia row col code            name
+## 1         TUCUMAN   1   4  013       BURRUYACU
+## 2         TUCUMAN   2   4  001         CAPITAL
+## 3         TUCUMAN   4   2  005     CHICLIGASTA
+## 4         TUCUMAN   2   5  012       CRUZ ALTA
+## 5         TUCUMAN   3   3  003        FAMAILLA
+## 6         TUCUMAN   5   4  009        GRANEROS
+## 7         TUCUMAN   5   3  007 JUAN B. ALBERDI
+## 8         TUCUMAN   6   3  008        LA COCHA
+## 9         TUCUMAN   3   5  011          LEALES
+## 10        TUCUMAN   3   4  002           LULES
+## 11        TUCUMAN   3   2  004        MONTEROS
+## 12        TUCUMAN   4   3  006       RIO CHICO
+## 13        TUCUMAN   4   4  010          SIMOCA
+## 14        TUCUMAN   2   1  017  TAFI DEL VALLE
+## 15        TUCUMAN   2   2  016      TAFI VIEJO
+## 16        TUCUMAN   1   3  014         TRANCAS
+## 17        TUCUMAN   2   3  015     YERBA BUENA</code></pre>
+<p><img src="/post/2020-05-22-empaquetar_files/figure-html/preview-1.png" width="672" /></p>
+<p>Luego, podemos hacer uso nuevamente de la información en nuestro diccionario de identificadores <em>geográficos</em> para recodificar los distritos. El código por <em>default</em> - el que figura dentro de cada cajita del <em>mapa</em>- es el correspondiente a los escrutinios provisorios (que utilizamos en <code>polAr</code>), pero podemos disponer de otros. Por ejemplo, los del <em>INDEC</em>:</p>
+<pre class="r"><code>get_grid(&quot;TUCUMAN&quot;) %&gt;%
+  recode_district(type = &quot;indec&quot;)</code></pre>
+<pre><code>## # A tibble: 17 x 4
+##    name            code    row   col
+##    &lt;chr&gt;           &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 BURRUYACU       007       1     4
+##  2 CAPITAL         084       2     4
+##  3 CHICLIGASTA     021       4     2
+##  4 CRUZ ALTA       014       2     5
+##  5 FAMAILLA        028       3     3
+##  6 GRANEROS        035       5     4
+##  7 JUAN B. ALBERDI 042       5     3
+##  8 LA COCHA        049       6     3
+##  9 LEALES          056       3     5
+## 10 LULES           063       3     4
+## 11 MONTEROS        070       3     2
+## 12 RIO CHICO       077       4     3
+## 13 SIMOCA          091       4     4
+## 14 TAFI DEL VALLE  098       2     1
+## 15 TAFI VIEJO      105       2     2
+## 16 TRANCAS         112       1     3
+## 17 YERBA BUENA     119       2     3</code></pre>
+<hr />
+<p>Hasta acá llegamos con la primera entrada respecto de {polAr} ya formalmente en CRAN. Espero en una próxima entrada contar un poco más del repositorio de datos y la incorporación de nuevas funciones en la versión de desarrollo.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Inspirados en <a href="https://github.com/jcrodriguez1989/ggplotme"><code>ggplotme</code></a> de <a href="https://twitter.com/CancuCS">Juan Cruz Rodrígurez</a> con <a href="">Camila Higa</a> - <a href="http://mentacomunicacion.com.ar/bigdata/">mentaComunicación</a>- trabajamos en un <em>bot</em> de <em>Twitter</em> que permite consultar resultados de elecciones. La idea es que un usuario le pregunta a <code>@pol_ar_bot</code> sobre una elección, cumpliendo con los parámetros necesarios (<code>distrito</code> + <code>turno</code> + <code>año</code> + <code>categoria</code>) y el <em>bot</em> responde graficando el resultado. <strong>bot</strong>: <a href="https://twitter.com/pol_Ar_bot" class="uri">https://twitter.com/pol_Ar_bot</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

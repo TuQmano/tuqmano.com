@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R, DataViz on TuQmanoR</title>
+    <link>/categories/r-dataviz/</link>
+    <description>Recent content in R, DataViz on TuQmanoR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jan 2019 17:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/categories/r-dataviz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GeofaceteAR</title>
+      <link>/2019/01/21/geofacetear/</link>
+      <pubDate>Mon, 21 Jan 2019 17:13:14 -0500</pubDate>
+      
+      <guid>/2019/01/21/geofacetear/</guid>
+      <description>En este posteo quiero mostrar brevemente el proyecto geofacet_AR, presentado en la primera edición de LatinR, tal como adelanté en el primer post. El mismo es una \(extensión^2\) (del proyecto de Ryan Hafen y, en otro nivel, de las grillas o facet de ggplot2).
+Me permito traducir el siguiente concepto de la nota introductoria del propio Hafen:
+“El paquete geofacet amplía ggplot2 de una manera que facilita la creación de visualizaciones geográficamente facetadas en R.</description>
+    </item>
+    
+  </channel>
+</rss>

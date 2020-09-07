@@ -1,0 +1,72 @@
+---
+title: "GeofaceteAR"
+author: "Juan Pablo Ruiz Nicolini"
+date: '2019-01-21T17:13:14-05:00'
+tags: R Markdown, ggplot, geo
+categories: R, DataViz
+---
+
+
+
+<p>En este posteo quiero mostrar brevemente el proyecto <code>geofacet_AR</code>, presentado en la primera edición de <em><em>LatinR</em></em>, tal como adelanté en el <a href="https://tuqmano.github.io/2018/01/17/bienvenidos-a-tuqmanor/">primer post</a>. El mismo es una <span class="math inline">\(extensión^2\)</span> (del proyecto de <em>Ryan Hafen</em> y, en otro nivel, de las grillas o <code>facet</code> de <code>ggplot2</code>).</p>
+<p>Me permito traducir el siguiente concepto de la <a href="https://ryanhafen.com/blog/geofacet/">nota introductoria del propio Hafen</a>:</p>
+<blockquote>
+<p>“El paquete <code>geofacet</code> amplía <code>ggplot2</code> de una manera que facilita la creación de visualizaciones geográficamente facetadas en <code>R</code>. Para usar <code>geofacet</code> se toman datos que representan diferentes entidades geográficas y se aplica un método de visualización para cada entidad. El conjunto resultante de visualizaciones conforma una cuadrícula que imita la topología geográfica original”.</p>
+</blockquote>
+<p>A continuación presetnaré con un ejemplo sencillo cuales (creo) son las mayores ventajas de <code>geofacet</code>. A saber:</p>
+<ul>
+<li><p>se pueden graficar múltiples variables para cada unidad geográfica</p></li>
+<li><p>se pueden aplicar otros esquemas de codificación visual más allá del color</p></li>
+<li><p>cada unidad geográfica tiene asignada la misma proporción espacial</p></li>
+</ul>
+<div id="número-efectivo-de-partidos-nep1" class="section level3">
+<h3>Número Efectivo de Partidos (NEP)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h3>
+<p>Vamos a usar datos de <em>NEP</em> basado en el trabajo de <a href="http://gvptsites.umd.edu/calvo/calvo-escolar-final-completo-Mayo-30.05.pdf">Calvo &amp; Escolar(2005)</a> y el <em>Atlas Electoral</em> de <a href="http://twitter.com/andy_tow">@andy_tow</a>. El indicador computa la proporción de votos que el partido <span class="math inline">\(_i\)</span> obtiene sobre el total de votos emitidos:</p>
+<p><span class="math inline">\(\LARGE N_{2}=\frac{1}{\sum_{i}^{n}p_{i}^2}\)</span></p>
+<p>Las fuetes origniales fueron <em>tucumaneadas</em> a <a href="http://twitter.com/Crst_C/">@Crst_C</a> y están disponibles en <a href="http://observablesyhechos.blogspot.com/2014/08/numero-efectivo-de-partidos-en.html">este post</a>.</p>
+<p><img src="/post/Geofacetear_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>El gráfico anterior funciona bastante bien. Usa la función <code>facet_wrap</code> de <code>ggplot2</code> para generar una grilla con el calculo de <strong>NEP</strong> para cada una de las provincias. Una serie de tiempo (1983-2011) y una linea roja vertical (<code>geom_vline</code>) que marca el año 2001 (la explosión del sistema de partidos o <em>El Naufragio</em> como lo denominaron <a href="https://www.jstor.org/stable/3455975">algunos</a>). Lo que <code>geofacet</code> permite con muy poco esfuerzo es acomodar la grilla simulando la geografía <em>“como si fuera un mapa”</em>, como veremos más adelante.</p>
+<hr />
+<p>Una de las propuestas de <code>geofacet</code> es potenciar el desarrollo colaborativo de <em>geografías</em>. Cuando lo descubrí, de hecho, ya existía una grilla representando la geografía de Argentina (<code>argentina_grid1</code>), desarrollada por <a href="">Elio Campitelli</a>. Como puede leerse en el <a href="https://github.com/TuQmano/geofacet_ARG/blob/master/ARGENTINA/README.md"><code>README.md</code></a> del repositorio, decidí hacer una segunda versión basándome en el código de Elio; salvo que en este caso se eliminaron las grillas correspondientes a Malvinas y la Antartida.</p>
+<p>El código para crear el objeto que luego servirá como grilla para los gráficos es el siguiente. Un <code>data.frame</code> con cuatro variables. <code>col</code> y <code>row</code> marcan posiciones de filas y columnas en la grilla, <code>code</code> asigna un código a cada provincia, y <code>name</code> contiene los nombres de esos distritos.</p>
+<p>Finalmente <code>grid_preview(argentina_grid2)</code> permite visualizar la grilla - mapa. Así, facilmente podemos identificar que <em>Jujuy (AR-Y)</em> - la primera unidad en las cuatro variables- tiene como coordenadas de filas y columnas <code>(1, 1)</code> y <em>Tierra del Fuego (AR-V)</em> - la última unidad de las variabales de nuestro <code>data.frame</code> tiene como coordenadas <code>(10, 1)</code>, siendo el primer valor para las filas (<code>row</code>) y el segundo para las columnas (<code>col</code>),</p>
+<pre class="r"><code>
+library(geofacet)
+
+# MAPA GRILLA DE PROVINCIAS ARGENTINAS
+argentina_grid2 &lt;-  data.frame(
+  col = c(1, 3, 5, 1, 2, 1, 3, 4, 2, 2, 4, 1, 3, 3, 4, 1, 2, 2, 1, 1, 2, 1, 1, 1),
+  row = c(1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 7, 8, 9, 10),
+  code = c(&quot;AR-Y&quot;, &quot;AR-P&quot;, &quot;AR-N&quot;, &quot;AR-A&quot;, &quot;AR-T&quot;, &quot;AR-K&quot;, &quot;AR-H&quot;, &quot;AR-W&quot;, &quot;AR-G&quot;, &quot;AR-X&quot;, &quot;AR-E&quot;, &quot;AR-F&quot;, &quot;AR-S&quot;, &quot;AR-B&quot;, &quot;AR-C&quot;, &quot;AR-J&quot;, &quot;AR-D&quot;, &quot;AR-L&quot;, &quot;AR-M&quot;, &quot;AR-Q&quot;, &quot;AR-R&quot;, &quot;AR-U&quot;, &quot;AR-Z&quot;, &quot;AR-V&quot;),
+  name_es = c(&quot;Jujuy&quot;, &quot;Formosa&quot;, &quot;Misiones&quot;, &quot;Salta&quot;, &quot;Tucumán&quot;, &quot;Catamarca&quot;, &quot;Chaco&quot;, &quot;Corrientes&quot;, &quot;S.del.Estero&quot;, &quot;Córdoba&quot;, &quot;Entre.Ríos&quot;, &quot;La.Rioja&quot;, &quot;Santa.Fe&quot;, &quot;Buenos.Aires&quot;, &quot;C.A.B.A.&quot;, &quot;San.Juan&quot;, &quot;San.Luis&quot;, &quot;La.Pampa&quot;, &quot;Mendoza&quot;, &quot;Neuquén&quot;, &quot;Río.Negro&quot;, &quot;Chubut&quot;, &quot;Santa.Cruz&quot;, &quot;T.del.Fuego&quot;),
+  stringsAsFactors = FALSE
+)
+
+grid_preview(argentina_grid2)</code></pre>
+<p><img src="/post/Geofacetear_files/figure-html/geogridARG-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="geofacet-nep" class="section level3">
+<h3><code>geofacet</code> + NEP</h3>
+<p>Habiendo cargado nuestro <em>mapa</em>, solo debemos agregar una capa al <em>chunk</em> de <code>ggplot2</code>:</p>
+<pre class="r"><code>
+#VERSION GEOFACET  
+ggplot(nep.prov, aes(year, NEPp)) +
+  geom_line(color = &quot;blue&quot;) +
+  #facet_wrap(~name_es) + ESTA ES LA LINEA QUE REEMPLAZAMOS DEL GRAIFCO ANTERIOR
+  facet_geo(~ name_es, grid = argentina_grid2) +  # ESTA ES LA LINA PARA ORDENAR LA GRILLA COMO SI FUERA UN MAPA
+  ylab(&quot;Número Efectivo de Partidos (NEP)&quot;) + 
+  scale_x_continuous(name = &quot;Año&quot;, 
+                     breaks = c(1983, 1994, 2005), 
+                     labels = c(&quot;`83&quot;,&quot;`94&quot;,&quot;`05&quot;))+ 
+  geom_vline(xintercept = 2001, colour=&quot;red&quot;)+ labs(caption=&quot;FUENTE: @Crst_C - http://observablesyhechos.blogspot.mx&quot; ) +
+  theme_bw()</code></pre>
+<p><img src="/post/Geofacetear_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<p>Esa es la idea básica de qué es y para qué sirve <code>geofacet</code>. En un próximo post intentaré con otros ejemplos mostrar un poco más el <strong>detrás de escena</strong> del código.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>“es el número hipotético de partidos de igual tamaño que tendrían el mismo efecto total en la fraccionalización del sistema que el número ‘real’ [actual] de tamaño desigual”</em> <a href="https://en.wikipedia.org/wiki/Effective_number_of_parties"><em>Laakso &amp; Taagepera (1979)</em></a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

@@ -1,0 +1,205 @@
+---
+title: polaR on CRAN
+author: TuQmano
+date: '2020-05-22'
+slug: empaquetar
+categories: [R, polAr]
+tags: [R, CRAN, polAr, geofacetAr]
+---
+
+
+
+Publicaron en CRAN una primera versión del paquete [polAr](https://electorarg.github.io/polAr/): _-POLítica ARgentina usando R_. En este post intentaré detallar un poco más el proceso de trabajo con el que llegamos hasta acá y, como yapa, el de [geofaceteAr](https://electorarg.github.io/geofaceteAR/).
+
+
+## polAr
+
+
+```{r echo=FALSE, warning=F}
+library(blogdown)
+blogdown::shortcode('tweet', '1261597845808975872')
+```
+
+
+
+La idea del paquete es brindar herramientas que faciliten el flujo de trabajo del análisis político - electoral y el acceso a datos de Argentina usando `R`. Podriamos dividir las funciones de esta primera versión en tres familias: _(i) datos_, _(ii) indicadores_ y _(iii) visualización_: 
+
+### datos
+
+El paquete no incluye datos, sino que funciona como motor de búsqueda y descarga desde un repositorio alternativo. La idea detrás de ello es que funcione de modo indpendiente, que ésta pudiera ser aumentada o modificada sin efectos directos sobre el paquete. En una próxima publicación intetnaré avanzar sobre la documentación de este repositorio y un proceo de chequeo de información. 
+
+La principal fuente de información es el siempre útil [_Atlas Electoral de Andy Tow_](https://www.andytow.com/). Sitio que, además de ser la fuente de tabulados electorales más completa que existe en Argentina, disponibiliza las bases con los datos desagregados publicados por los escrutinios provisorios desde el año 2003 en adelante. 
+
+El primer paso de lo acá compartido fue el procesamiento de esas bases de datos y el armado de un  repositorio propio que me facilitara el trabajo de llamado de elecciones. En resumen: transformamos archivos `.mdb` (formato para tablas relacionles de _Microsoft Acces_) en `sqlite` para cada año electoral e hicimos consultas a esas basese de datos para obtener un archivo `.csv` para cada elección con una estrcutura así:  `distrito_categoria_turno_año.csv`. 
+
+Solo para las elecciones del proceso electoral de 2019 trabajamos con datos compartidos por *pmoracho* en [_github_](https://github.com/pmoracho). Algo más de detalle del estado actual de todo esto esta disponible en el repositorio [`PolAr_Data`](https://github.com/electorArg/PolAr_Data). 
+
+Al día de hoy el repositorio cuenta con 425 archvios de elecciones para las catgorías a Presidente, Diputades y Senadores Nacionales, para elecciones generales, primarias (P.A.S.O.) y balotaje presidencial. 
+
+Con  `show_available_elections()` accedemos a un índice con la información disponible que podemos descargar: 
+
+```{r show, echo= F}
+
+library(polAr)
+show_available_elections()
+
+
+
+```
+
+
+Tomando los parámetros de la tabla anterior con el siguiente comando  podemos completar los campos obligatorios para obtener los datos, en este caso de la elección general para presidente de 2019. 
+
+
+```{r get_data}
+
+
+arg19 <- get_election_data(district = "arg",
+                  category = "presi",
+                  round = "gral", 
+                  year = 2019)
+
+arg19
+
+
+```
+
+`arg19` es un _tibble_ de $192$ filas y 8 variables. Las filas son el producto de 8 filas únicas por provincia (los 24 grupos) con la cantidad de votos obtenidos por las distintas opciones electorales en este turno, categoría y año. 
+
+En este [artículo](https://electorarg.github.io/polAr/articles/data.html) se puede encontrar más detalles de la función. 
+
+---
+
+### indicadores
+
+El acceso a la información es quizás la función princiapl de `polAr`, la cual permitirá a usuaries trabajar con los datos como quieran. Pero el paquete incopora además funciones para realizar cálculos de interés para el análisis político. Esta primera versión solamente incluye dos varianes: `compute_nep()`, que devulelve el _Número Efectivo de Partidos_ (según dos fórmulas distintas) y `compute_cometitiveness()`, que calcula el nivel de competencia de una elección determinada.  
+
+
+```{r nep}
+
+arg19 %>% 
+  compute_competitiveness() %>% 
+  print(n= 24)
+
+```
+
+
+Este [artículo](https://electorarg.github.io/polAr/articles/compute.html) del paquete tiene algo más de detalle. 
+
+---
+
+### visualización
+
+Por último `polAr` incluye un par funciones que ayudan a visualizar rápidamente las elecciones de manera resumida. Una primera alternativa es generar tabulados con los resultados agregados de un comicio: 
+
+
+```
+arg19 %>% 
+  get_names() %>% 
+  tabulate_results()
+```
+
+
+```{r tabulate, echo=FALSE}
+arg19 %>% 
+  tabulate_results()
+```
+
+Otra alternativa es analizarlos de manera gráfica[^1]:
+
+[^1]: Inspirados en [`ggplotme`](https://github.com/jcrodriguez1989/ggplotme) de [Juan Cruz Rodrígurez](https://twitter.com/CancuCS) con [Camila Higa]() - [mentaComunicación](http://mentacomunicacion.com.ar/bigdata/)- trabajamos en un _bot_ de _Twitter_ que permite consultar resultados de elecciones. La idea es que un usuario le pregunta a `@pol_ar_bot` sobre una elección, cumpliendo con los parámetros necesarios (`distrito` + `turno` + `año` + `categoria`) y el _bot_ responde graficando el resultado. **bot**: https://twitter.com/pol_Ar_bot
+
+```
+arg19 %>% 
+  get_names() %>% 
+  plot_results(national = T)
+```
+
+
+```{r plot, echo=FALSE}
+arg19 %>% 
+  plot_results(national = T)
+```
+
+
+Ambas funciones requieren utilizar primero `get_names` en la versión de CRAN. Esta es una función auxiliar para vincular la base de datos de resultados con los nombres de las listas que compiten. 
+
+La versión en desarrollo elimina ese paso intermedio para los casos por defecto de obtención de datos (con fomato `long`) pero sigue funcionando para los casos en que los datos de la elección fueron descargados `wide`. 
+
+
+Puede notarse que `plot_results()` fue llamado con un parámatro `national = TRUE`. De esta manera, para elecciones a presidente, el gráfico resultante muestra el agregado de votos al nivel del distrito que se elige el cargo. Si, en cambio, no especificamos nada, el parámetro `FALSE` por defecto nos devolverá los resultados a nivel de provncias en grillas _cómo si fueran mapas_. De igual modo, si descargamos una elección a nivel departamental, `plot_results()`automáticamente graficará los resultados con `geofacetAR`. 
+
+
+```{r geofaceteAR, echo=T, fig.width=7, fig.height=8}
+get_election_data(district = "caba",
+                  category = "dip", 
+                  round = "paso" , 
+                  year = 2019 , 
+                  level = "departamento") %>% 
+  plot_results()
+```
+
+
+
+**RESUMIENDO**
+
+
+```{r echo=FALSE, warning=F}
+library(blogdown)
+blogdown::shortcode('tweet', '1263618240938496000')
+```
+
+
+---
+
+## gofaceteAr
+
+
+<img src="https://github.com/electorArg/geofaceteAR/blob/master/hex/ggplot2.png?raw=true" width="200">
+
+
+
+
+Lo anterior es posible gracias a otro paquete, disponible para descarga desde un repositorio de _github_.  `geofaceteAr` es una extensión local del paquete `geofacet` de Ryan Haffen. El empaquetado fue el resultado de ordenar la aplicación para Argentina de esta técnica de acomodar las grillas de `ggplot2` como si fueran mapas, originalmente presentadas en `LatinR` 2018. 
+
+Éste carga el paquete `geofacet` y agrega funciones de utilidad para la _geografía_ argentina. La priemra de ellas es `show_arg_codes()`que muestra un diccionario de grillas con el _id_ correspondiente para descarga y equivalencias de los _id_ correspodientes a los  diferentes distritos. 
+
+```{r show_codes, message=FALSE, warning=FALSE}
+library(geofaceteAR)
+
+show_arg_codes()
+
+```
+
+
+Usamos la función `get_grid()` para llamar una grilla disponible en la tabla anterior. Y `grid_preview()` si queremos ver el diseño de la grilla.
+
+
+```{r get, message=FALSE, warning=FALSE}
+get_grid("TUCUMAN") 
+
+```
+
+
+```{r preview, message=FALSE, echo = F, warning=FALSE}
+get_grid("TUCUMAN") %>% 
+  grid_preview()
+
+```
+
+Luego, podemos hacer uso nuevamente de la información en nuestro diccionario de identificadores _geográficos_ para recodificar los distritos. El código por _default_ - el que figura dentro de cada cajita del _mapa_- es el correspondiente a los escrutinios provisorios (que utilizamos en `polAr`), pero podemos disponer de otros. Por ejemplo, los del _INDEC_: 
+
+
+```{r recode, message=FALSE, warning=FALSE}
+get_grid("TUCUMAN") %>%
+  recode_district(type = "indec")
+
+```
+
+
+---
+
+Hasta acá llegamos con la primera entrada respecto de {polAr} ya formalmente en CRAN. Espero en una próxima entrada contar un poco más del repositorio de datos y la incorporación de nuevas funciones en la versión de desarrollo. 
+
+
+

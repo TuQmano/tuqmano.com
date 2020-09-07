@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on TuQmanoR</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on TuQmanoR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>polaR on CRAN</title>
+      <link>/2020/05/22/empaquetar/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/22/empaquetar/</guid>
+      <description>Publicaron en CRAN una primera versión del paquete polAr: -POLítica ARgentina usando R. En este post intentaré detallar un poco más el proceso de trabajo con el que llegamos hasta acá y, como yapa, el de geofaceteAr.
+polArNew CRAN package polAr with initial version 0.1.3 https://t.co/0QdYpl5sce #rstats
+&amp;mdash; CRAN Package Updates (@CRANberriesFeed) May 16, 2020  La idea del paquete es brindar herramientas que faciliten el flujo de trabajo del análisis político - electoral y el acceso a datos de Argentina usando R.</description>
+    </item>
+    
+    <item>
+      <title>Bienvenidos a TuQmanoR</title>
+      <link>/2019/01/17/bienvenidos-a-tuqmanor/</link>
+      <pubDate>Thu, 17 Jan 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/2019/01/17/bienvenidos-a-tuqmanor/</guid>
+      <description>Este nuevo espacio TuQmano en la nube está pensado para compartir parte del aprendizaje y trabajo con datos. La idea principal es publicar análisis y visualizaciones desarrolados en R.
+Como primer ejemplo vale este mismo sitio. TuQmanoR está creado a partir de la librería blogdown, que combina diversos lenguages (md, RMd, git y HUGO entre otros) para crear sitios estáticos. Todo desde el mismo entorno de RStudio.
+Una de las mayores ventajas de trabajar con R (además de la gratuidad) es la gran comunidad de usuarios.</description>
+    </item>
+    
+  </channel>
+</rss>

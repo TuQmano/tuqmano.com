@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.66.0" />
+
+
+<title>LatinR 2019... allá vamos. - TuQmanoR</title>
+<meta property="og:title" content="LatinR 2019... allá vamos. - TuQmanoR">
+
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/post">Blog</a></li>
+    
+    <li><a href="/about">El TuQmano</a></li>
+    
+    <li><a href="https://github.com/TuQmano">GitHub</a></li>
+    
+    <li><a href="https://electorarg.github.io/polAr/">polAr</a></li>
+    
+    <li><a href="https://www.researchgate.net/profile/Juan_Ruiz_Nicolini">Research</a></li>
+    
+    <li><a href="https://tuqmano.tumblr.com/">TuQland</a></li>
+    
+    <li><a href="https://twitter.com/tuqmano">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">LatinR 2019... allá vamos.</h1>
+
+    
+    <span class="article-date">2019-09-08</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>Los próximos 25, 26 y 27 de septiembre se desarrollará en Santiago de Chile la segunda edición de <em><a href="https://latin-r.com/">LatinR</a>: Conferencia Latinoamericana sobre el uso de <code>R</code> en I+D</em>. Tuve la suerte de participar en la primera edición, que se llevó a cabo en Buenos Aires hace un año, donde pude mostrar un pequeño proyecto -aún en desarrollo- que consiste en el armado de <em>grillas como si fueran mapas</em> (<code>geofacet</code>) aplicados a divisiones políticas de Argentina (a nivel país y provincial) <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Gracias al apoyo del comité evaluador tendré la oportunidad de participar nuevamente en esta segunda edición. En esta ocasión mostraré un proyecto en el que trabajamos con el colega y tocayo JP Pilorget para <b><span style="color:#179E8D"><em>menta Comunicación</em></span></b> . Un <em>dashboard</em> de <code>Shiny</code> que permite la visualización rápida y centralizada de variables electorales, de interés para el análisis político y el desarrollo de campañas electorales (en desarrollo).</p>
+<p><img src="https://pbs.twimg.com/media/D_sCYBWW4AAgVBz?format=jpg" /></p>
+<p>Un proyecto que derivó de <em>Inteligencia Electoral</em> pero terminó como un producto paralelo fue el <code>Índice Socioeconómico menta</code>, que puede consultarse en línea <a href="http://socioeconomico.mentacomunicacion.com.ar/">acá</a>.</p>
+<p>Todo el flujo de trabajo de estos proyectos fue realizado con <code>R</code>, desde el entorno de <code>RStudio</code>:</p>
+<ol style="list-style-type: decimal">
+<li>el armado de los <code>data.frames</code> a partir de bases en archivos <code>sql</code>(importandolas a <code>R</code>, aprovechando el desarrollo de <a href="https://db.rstudio.com/"><code>db</code></a>) y el <em>codeo</em> en <code>sql</code> desde <em>notebooks</em> con <code>RMd</code>.</li>
+<li>el procesamiento de información para estructurar las bases de datos y la generación de gráficos con el <em>suite</em> <code>Tidyverse</code> (<code>dplyr</code>, <code>tidyr</code>, <code>ggplot</code>, etc),</li>
+<li>la cartografía -corazón y puerta de entrada de las <em>apps</em>- con <code>leaflet</code></li>
+<li>y, por spuesto, el uso de <code>shiny</code> para el armado de la aplicación.</li>
+</ol>
+<hr />
+<p>Habiendo pasado los avisos parroquiales, quiero aprovechar para agradecer nuevamente a todo el equipo detrás de <code>LatinR</code>, sus <em>chairs</em>, comités y equipo de coordincación. Si la experiencia de 2018 y el contacto (sobre todo ciebrnético, por la red del pajarito y slack) desde entonces fue para mí un lugar de gran aprendizaje, no dudo que la edición de 2019 llevará eso a otro nivel.</p>
+<p>Para quienes puedan tener interés, <a href="https://docs.google.com/document/d/e/2PACX-1vSZ8DGcjkOXjrVNA2gqNbk0kIwU3HhyoBFyEm4RCyqcvBUFXEXO53sQ3qalQGNLV6BJUdXU-RIb6Sk5/pub">acá</a> pueden acceder al programa, con detalle de las mesas, ponencias y talleres, todos muy prometedores. Por mi cuenta, mientras que en 2018 pude tener mi primer acercamiento a <code>purrr</code> de la mano de <a href="https://twitter.com/jennybryan">Jenny Bryan</a>, ahora estoy entusiasmado por sumergirme en el desarrollo de paquetes con el tutorial de <a href="https://twitter.com/hadleywickham">H. Wickham</a>. Botones de muestra del gran laburo de quienes empujan por más <code>R</code> <em>nuestroamericano</em>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Esto decíamos en un post previo: <a href="https://tuqmano.github.io/2019/01/21/geofacetear/"><em>geofaceteAR</em></a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

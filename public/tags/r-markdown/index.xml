@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Markdown on TuQmanoR</title>
+    <link>/tags/r-markdown/</link>
+    <description>Recent content in R Markdown on TuQmanoR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jan 2019 17:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bienvenidos a TuQmanoR</title>
+      <link>/2019/01/17/bienvenidos-a-tuqmanor/</link>
+      <pubDate>Thu, 17 Jan 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/2019/01/17/bienvenidos-a-tuqmanor/</guid>
+      <description>Este nuevo espacio TuQmano en la nube está pensado para compartir parte del aprendizaje y trabajo con datos. La idea principal es publicar análisis y visualizaciones desarrolados en R.
+Como primer ejemplo vale este mismo sitio. TuQmanoR está creado a partir de la librería blogdown, que combina diversos lenguages (md, RMd, git y HUGO entre otros) para crear sitios estáticos. Todo desde el mismo entorno de RStudio.
+Una de las mayores ventajas de trabajar con R (además de la gratuidad) es la gran comunidad de usuarios.</description>
+    </item>
+    
+  </channel>
+</rss>

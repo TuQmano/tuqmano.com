@@ -1,0 +1,114 @@
+---
+title: dibujaR legislatuRas
+author: ~
+date: '2020-03-15'
+slug: dibujar-legislaturas
+categories: []
+tags: []
+---
+
+
+
+<p>Aprovechamos el distanciamiento social para comaprtir algunas de las cosas que venían quedando pendiente de actualizar.</p>
+<p>Ya se pueden leer en TuQmanoR dos de los ejercicios con datos y visualizaciones que hicimos con les compañeres de <strong><em>menta Comunicación</em></strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Uno primero consistió en <a href="https://tuqmano.github.io/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/">analizar la información asociada a cada una de las cuentas de legisladores (Senadores y Diputades)</a> argentinos que conformarán el Congreso Nacional en el periódo 2019-2021: cómo son utilizadas las cuentas, cómo interactúa el público con sus publicaciones y cómo podemos distinguir a las cuentas en distintos grupos o clusters de afinidad.</p></li>
+<li><p>Más recientemnte publicamos un <a href="https://tuqmano.github.io/2020/03/11/los-discursos-de-les-presidentes/">breve análisis basado en los discursos que les presidentes emiitieron en las inauguraciones de Sesiones Ordinarias ante la Asamblea Legislativa</a> desde el retorno de la democrácia (1984 - 2020). Un poco de minería de texto sobre las más de 350 mil palabras contenidas en 37 discursos de 8 presidentes.</p></li>
+<li><p>En esta entrada quiero mostrar una librería (<code>ggparliament</code>)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> que nos permite a quienes hacemos análisis político / politológico graficar de manera clara y sintética la distribución de poder en las cámaras legislativas.</p></li>
+</ol>
+{{% tweet "1233059030802870272" %}}
+<hr />
+<p>El que sigue es un ejemplo de la actual composición de la Legislatura de la Provincia de TuQland.</p>
+<p><img src="/post/2020-03-15-dibujar-legislaturas_files/figure-html/plot-1.png" width="576" /></p>
+<hr />
+<div id="receta-para-una-legislatura-en-3-pasos" class="section level2">
+<h2>Receta para una legislatuRa en 3 pasos</h2>
+<ol style="list-style-type: decimal">
+<li>En primer lugar tenemos que armar una base de datos como la de abajo para tener a mano todos los parámetros que nos permitirán <em>customizar</em> lo más posible nuestra vizualización.</li>
+</ol>
+<p>En este caso mantuve los nombres de las columnas en el ejemplo original de la librería, por lo que muchos valores no tienen demasiado sentido. Estamos hablando de una sola unidad (Tucumán) y un solo periódo de tiempo (2020). Pero nuestra base de datos podría contener, por ejemplo, a los 24 distritos y múltiples composiciones a lo largo del tiempo. Luego hay variables que funcionan como <em>id</em> (<code>party_short</code>), otra para imprimir las etiquetas (<code>party_long</code>), la cantidad de bancas (<code>seats</code>) y hasta la elección de un <code>color</code> que se asocie a la fuerza política en cuestión.</p>
+<pre class="r"><code>library(tidyverse)
+
+diputados_tucuman &lt;- read_csv(&quot;https://raw.githubusercontent.com/TuQmano/data_TuQmanoR/master/legislatuRas/tucuman.csv&quot;) %&gt;% 
+  print()</code></pre>
+<pre><code>## # A tibble: 7 x 9
+##    year country house  party_long      party_short seats government colour orden
+##   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+## 1  2020 TUCUMAN DIPUT~ Frente Justici~ PJ             33          1 #2b8c~     3
+## 2  2020 TUCUMAN DIPUT~ Fuerza Republi~ FuerzaR         8          0 #0000~     2
+## 3  2020 TUCUMAN DIPUT~ Hacemos Tucumá~ Hacemos T       2          0 #a6bd~     3
+## 4  2020 TUCUMAN DIPUT~ Libres del Sur~ Libres          1          0 #519e~     1
+## 5  2020 TUCUMAN DIPUT~ Psj Recuperemo~ PSJ             3          0 #f57f~     1
+## 6  2020 TUCUMAN DIPUT~ UCRHipólito Yr~ UCRHY           1          0 #f759~     1
+## 7  2020 TUCUMAN DIPUT~ UCR (1 banca -~ UCR             1          0 #ed00~     1</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>El segundo paso consiste en transformar esa base de datos en otra que tenga un formato adecuado para luego poder realizar la visualización con un agregado de <code>ggplot2</code>. La función <code>parliament_data</code> de <code>ggparliament</code> es la que se encarga de la magia. Abajo un detalle de los parámetros que podemos utilizar.</li>
+</ol>
+<pre class="r"><code># VOY A CREAR EL OBJETO DE ggparliament con la data ordenada para el plot
+
+data_diputados_tucuman&lt;- ggparliament::parliament_data(diputados_tucuman, #datos originales
+                                                       type = &quot;semicircle&quot;, # forma del hemiciclo
+                                                       parl_rows =3, # cantidad de filas
+                                                       party_seats = diputados_tucuman$seats, # número de bancas 
+                                                       plot_order = diputados_tucuman$orden) %&gt;% #orden de partidos en hemiciclo
+  mutate(colour = as.character(colour)) %&gt;% # vector de texto para codigo HEX de colores asignados previamente
+  as_tibble() %&gt;%  
+  print()</code></pre>
+<pre><code>## # A tibble: 49 x 13
+##     year country house party_long party_short seats government colour orden
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+##  1  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  2  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  3  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  4  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  5  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  6  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  7  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  8  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+##  9  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+## 10  2020 TUCUMAN DIPU~ Frente Ju~ PJ             33          1 #2b8c~     3
+## # ... with 39 more rows, and 4 more variables: x &lt;dbl&gt;, y &lt;dbl&gt;, row &lt;int&gt;,
+## #   theta &lt;dbl&gt;</code></pre>
+<p>Observamos que mientras la base de datos original tenía un largo de <span class="math inline">\(7x9\)</span> (<span class="math inline">\(7\)</span> filas - una por cada partido político- y <span class="math inline">\(9\)</span> columnas o variables), con la transformación se creó un nuevo objeto de <span class="math inline">\(49x13\)</span>. Ahora el largo de la base tiene una fila por legislador, extendiendo la información agregada de la base original a cada miembro de un partido. Además se generaron nuevas variables <code>x, y, row, theta</code> que marcan la posición en que se graficará cada una de las bancas.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Por último una secuencia de código con la que realizamos el gráfico. Notar que las <em>geometrías</em> que especificamos a <code>ggplot</code> son del tipo genérico <code>geom_parliament_</code>. Cada una agrega una capa:</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>Con <code>geom_parliament_seats</code> podemos manipular el tamaño del punto que representa un escaño.</p></li>
+<li><p>En <code>geom_parliament_goverment</code> estamos especificando parámetros para resaltar cuáles escaños corresponden al partido de gobierno.</p></li>
+<li><p>Con <code>geom_parliament_bar</code> incorporamos la barra superior que agrega el <span class="math inline">\(\%\)</span> de bancas de cada espacio.</p></li>
+</ol>
+<p>Por último, con <code>draw_majoritythreshold</code> podemos marcar la posición que permite distinguir si hay un espacio político que alcanza la mayoría</p>
+<pre class="r"><code>library(tidyverse)
+library(ggparliament)
+library(ggthemes)
+
+
+data_diputados_tucuman %&gt;% as_tibble() %&gt;% 
+  ggplot(aes(x, y, colour = party_long)) +
+  geom_parliament_seats(size = 7) + # tamaño de bancas (puntos)
+  geom_highlight_government(government == 1, colour = &quot;black&quot;, size = 8) + # circulo negro al oficialismo
+  geom_parliament_bar(party = party_short, label = F) + # barra con proporción de bancas
+  draw_majoritythreshold(n = 31, label = F, type = &quot;semicircle&quot;) + # dibuja el limite de mayoría 
+  scale_colour_manual(values = data_diputados_tucuman$colour, #asigno colores 
+                      limits = data_diputados_tucuman$party_long)  +
+  guides(colour = guide_legend(nrow=7)) + # customiza etiquetas
+  labs(title = &quot;TUCUMÁN&quot;, 
+       subtitle = &quot;Diputados 2019 - 2021&quot;,  
+       colour = &quot;Bloques&quot;) +
+  theme_fivethirtyeight() + # estética de gráficos estilo FiveThiryEight
+  theme(panel.grid = element_blank(), 
+        axis.text = element_blank(), 
+        legend.position = &quot;bottom&quot;, 
+        legend.text = element_text(size = 14))</code></pre>
+<p><img src="/post/2020-03-15-dibujar-legislaturas_files/figure-html/plot_code-1.png" width="576" /></p>
+<p>Será hasta la próxima entrada.</p>
+<p>Y recuerden, compañeros…</p>
+{{% tweet "1237792468378300419" %}}
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Acá puede consultarse el repositorio oficial de la liberería con más ejemplos y definiciones <a href="https://github.com/RobWHickman/ggparliament">https://github.com/RobWHickman/ggparliament</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

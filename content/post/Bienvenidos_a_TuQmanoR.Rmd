@@ -1,0 +1,131 @@
+---
+title: "Bienvenidos a TuQmanoR"
+author: "Juan Pablo Ruiz Nicolini"
+date: '2019-01-17T21:13:14-05:00'
+tags: R Markdown
+categories: R
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+Este nuevo espacio _TuQmano_ en la nube está pensado para compartir parte del aprendizaje y trabajo con datos. La idea principal es publicar análisis y visualizaciones desarrolados en `R`. 
+
+Como primer ejemplo vale este mismo sitio. *TuQmanoR* está creado a partir de la librería `blogdown`, que combina diversos lenguages (`md`, `RMd`, `git` y `HUGO` entre otros) para crear sitios estáticos. Todo desde el mismo entorno de `RStudio`. 
+
+Una de las mayores ventajas de trabajar con `R` (además de la gratuidad) es la gran comunidad de usuarios. Para la creación de este espacio fueron de gran utilidad: 
+
+* Para `blogdown` el libro de Yihui Xie, Amber Thomas y Alison Presmanes Hill: [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/).
+
+* Para trabajar con `git` [Happy Git and GitHub for the useR](https://happygitwithr.com/), de Jenny Bryan.
+
+* Para la configuración del sitio -vinculando `HUGO` con `github`: [Making a Website Using Blogdown, Hugo, and GitHub pages](http://amber.rbind.io/blog/2016/12/19/creatingsite/), de Amber Thomas.
+
+* la ayuda de useRs de la comunidad argenta ( [Elio Campitelli](https://twitter.com/d_olivaw), [Fernando Flores](https://twitter.com/ds_floresf) y [Pao Corrales](https://twitter.com/PaobCorrales)).
+
+La comunidad de usuarios de `R` en Argentina viene creciendo sostenidamente. Experiencias como las de [*LatinR 2018*](http://latin-r.com/) y la proliferación de grupos como [*RLadies*](https://twitter.com/RLadiesBA) o [R en Buenos Aires](https://twitter.com/renbaires) (y otros tantos capítulos en otras ciudades) son una pequeña muestra de eso. 
+
+Precisamente en *LatinR 2018* pude presentar una parte de mi trabajo - aún un _wip_. Se trata de `geofacet_ARG`: una simulación de grillas de `ggplot2` (`facet`) como si fueran mapas. El _abstract_, código y presentación se encuentran en una carpeta del repisotrio de [`github`](https://github.com/TuQmano/geofacet_ARG/tree/master/.LatinR). Abajo un ejemplo de un gráfico de Tucumán (que pienso desarrollar en un próximo post) que muestra el % de votos de los 2 principales espacios políticos, por departamento, a lo largo del tiempo.
+
+```{r DATA TUC, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+##############################################
+##############################################
+
+###################################################
+###################################################
+
+
+###################### Needed Packages ###################
+library(magrittr)
+library(tidyverse)
+library(readxl)
+library(dplyr)
+library(plyr)
+library(geofacet) # <--- geofacet
+library(foreign)
+
+###################################################
+
+tuc.historico <- read.dta("http://www.noamlupu.com/argentina_ecological_data.dta") %>% 
+  filter(province == "Tucuman", 
+         dip == 1)# dataset import
+      # Source: Noam Lupu´s  "Argentina Electoral Dataset" -> http://www.noamlupu.com/data.html
+
+
+# variable selection (dplyr) ("departamento", "año", "votos totales", "votos ucr" y "votos pj")
+tuc.historico <- select(tuc.historico, department, year, total, ucr, pj)
+
+
+####### TUCUMAN´s departments "grid.map"  ->  to fit grids as if they where a map
+mygrid <- data.frame(
+  name = c("Trancas", "Burruyacu", "T.del Valle", "Cruz Alta", 
+           "Y.Buena", "Capital", "T.Viejo", "Leales", "Monteros",
+           "Famailla", "Lules", "Chicligasta", "Rio Chico", 
+           "Simoca", "Graneros", "Alberdi", "La Cocha"),
+  code = c("2", "3", "1", "7", "5", "6", "4", "11", "10", "9", "8", "12", "14", "13", "16", "15", "17"),
+  row = c(1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6),
+  col = c(3, 4, 1, 5, 3, 4, 2, 5, 2, 3, 4, 2, 3, 4, 4, 3, 3),
+  stringsAsFactors = FALSE
+)
+ # geofacet::grid_preview(mygrid)   Sacar # para previsualizar el mapa-grilla
+ # 
+ 
+
+## RECODE DEPARTMENTS NAMES IN DATA TO FIT GRID
+
+tuc.historico$department[which(tuc.historico$department == "Tafi")] <- "T.Viejo"
+tuc.historico$department[which(tuc.historico$department == "Yerba Buena")] <- "Y.Buena"
+tuc.historico$department[which(tuc.historico$department == "Tafi del Valle")] <- "T.del Valle"
+tuc.historico$department[which(tuc.historico$department == "Tafi Viejo")] <- "T.Viejo"
+
+
+### new vars - vote share (%) for both parties (PJ y UCR)
+tuc.historico$ucr.pc <- (tuc.historico$ucr/tuc.historico$total)*100
+tuc.historico$pj.pc <- (tuc.historico$pj/tuc.historico$total)*100
+
+##### data.frame:   wide -> long 
+tuc.historico.long <- gather(tuc.historico, party, votos, ucr.pc, pj.pc)
+
+
+
+#### convert variable type 
+tuc.historico$department <- as.factor(tuc.historico$department)
+
+tuc.historico$ucr.pc <- as.factor(tuc.historico$ucr.pc)
+tuc.historico$pj.pc <-  as.factor(tuc.historico$pj.pc)
+
+
+# Final Data Frame
+# variables selection
+tuc.electoral <- select(tuc.historico.long, department, year, party, votos) 
+
+
+#recode values in "Partidos" variable (col)
+tuc.electoral$party[which(tuc.electoral$party == "ucr.pc")] <- "UCR" 
+tuc.electoral$party[which(tuc.electoral$party == "pj.pc")] <- "PJ"
+
+
+# rename de variables
+colnames(tuc.electoral) <- c("depto", "year", "party", "votes") # rename de variables
+
+
+tuc.electoral$votes[is.na(tuc.electoral$votes)] <- 0 # recode NA´s = 0
+
+# PLOT 
+
+attach(tuc.electoral)
+ggplot(tuc.electoral)+
+  geom_line(aes(year, votes, group=party, colour=party)) +
+  facet_geo(~ depto, grid = mygrid)+
+  ylab("%") + 
+  scale_colour_manual(name="Party Labels", breaks = c("PJ", "UCR"), 
+                    values=c("#0B25E1", "#EF1111")) + 
+  scale_x_continuous(name = "Year", breaks = c(1916, 1936, 1956, 1976,1996), 
+                     labels = function(x) paste0("'", substr(x, 3, 4))) + 
+  theme_bw() +
+  theme(legend.position="top", 
+        axis.title.y = element_text(size = 20), 
+        plot.title = element_text(size = 20, face = "bold"))
+```
+

@@ -1,0 +1,141 @@
+---
+title: 'LatinR2019 ha muerto... que viva LatinR2020'
+author: TuQmano
+date: '2019-09-30'
+slug: latinr2019-ha-muerto-que-viva-latinr2020
+categories: []
+tags: []
+---
+
+
+---
+title: "latinR tweets"
+output: html_notebook
+---
+
+
+```{r include=FALSE}
+
+library(tidyverse)
+
+data <- read_csv("https://raw.githubusercontent.com/TuQmano/data_TuQmanoR/master/tweets_latinR.csv")
+
+```
+
+Terminó nomás la segunda edición de [#LatinR](https://latin-r.com/). Tres días a pleno con  _workshops_, exposiciones plenarias, presentaciones y posters. Diversidad de disciplinas, participantes de casi toda nuestramerica e invitados super grosos. Donde no solo aprendí cuestiones técnicas y nuevas herramientas, sino también el ejericio constante de reforzar el trabajo colaborativo dentro de una comunidad diversa y plural.
+
+![](https://pbs.twimg.com/media/EFmQee1X0AATUnv?format=jpg&name=large)
+
+Yo en particular tuve la gran oportunidad además de (a) participar de un genial taller sobre el desarrollo de paquetes, con el messi de este lío (H.Wickham - arriba); y (b) mostrar parte del trabajo y aprendizaje desde aquel ya lejano `#LatinR2018`. 
+
+Acá se puede acceder al `shiny` app de [Inteligencia Electoral](http://inteligenciaelectoral.mentacomunicacion.com.ar/). Acá las [slides](https://www.researchgate.net/publication/336145088_Inteligencia_Electoral) de la presentación y acá el [abstract](https://www.researchgate.net/publication/336145098_Inteligencia_Electoral_comportamiento_y_campanas).
+
+---
+## `LatinR` en la red del pajarito 
+
+Twitter es un gran lugar para estar conectado con las novedades de [#rstats](https://twitter.com/search?q=rstatsES). Y `LatinR` nos dió la posibilidad de poder ponerle cara a un montón de `@rrobas` con los que uno interactúa cotidianamente en esa conexión. Algo de todo esto se pudo vivir a través de twitter detrás del _hashtag_ `#LatinR2019`. Los gráficos de abajo son una muestra de eso.    
+
+
+```{r contributors, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+usuarios_activos <- data  %>% 
+  group_by(username) %>% 
+  summarise(tweets = n()) %>% 
+  mutate(pct = tweets/sum(tweets)*100) %>% 
+  arrange(desc(pct)) %>% 
+  mutate(acumulado = round(cumsum(pct)), 
+         text_col = case_when(
+           acumulado < 55 ~ "white", 
+           acumulado >= 55 ~ "black")) %>%
+  top_n(20, wt = pct) 
+
+
+  ggplot(usuarios_activos) +
+  geom_col(aes(fct_reorder(username, desc(acumulado)), acumulado, 
+               fill = acumulado)) +
+  coord_flip() +
+  scale_fill_viridis_c() +
+  geom_text(aes(y = 20, x = username,  label = username),
+            color = usuarios_activos$text_col) +
+    geom_text(aes(x = fct_reorder(username, desc(acumulado)), 
+                  y = acumulado, 
+                  label = paste0(acumulado, "%")), hjust = "inward") +
+  ggthemes::theme_fivethirtyeight() +
+    theme(axis.text.y = element_blank(), 
+          legend.position = "none") +
+    labs(x = "porcentaje de tuits acumulados", 
+         title = "Participantes activos en la conversación #LatinR2019",
+         subtitle = "20 usuaries acumulan un 73% de las publicaciones (n = 610 tweets)")
+    
+
+
+```
+
+
+
+```{r grafo, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(ggraph)
+library(igraph)
+library(tidytext)
+library(tidygraph)
+
+
+
+user_details <- data %>% 
+  group_by(username) %>% 
+  summarise_at(vars(retweets_count, likes_count, replies_count), funs(sum)) %>% 
+  rename(rt = retweets_count, like = likes_count, reply = replies_count) %>% 
+  mutate(interaccion = rt + like + reply)
+
+
+mentions<- data %>% 
+  filter(date > '2019-08-31') %>% 
+  select(user = username, text =tweet) %>% 
+  unnest_tokens("words", "text", "tweets") %>% 
+  filter(str_detect(words, "^@")) %>% 
+  mutate(from_name = user,
+         to_name = str_remove(words, "@")) %>% 
+  count(from_name, to_name) %>% 
+  arrange(desc(n)) 
+
+
+#grafo <- as_tbl_graph(mentions) %>% 
+#  mutate(Inluencia = centrality_degree(n)) %>% 
+#  left_join(user_details, c("name" = "username")) %>% 
+#  mutate(comunity = group_walktrap())
+#
+#
+#
+#ggraph(grafo, layout = 'nicely') +
+#    geom_edge_link() +
+#    geom_node_point(size = , colour = "steelblue") +
+#    theme_graph()
+#
+
+
+grafo2 <- as_tbl_graph(mentions) %>% 
+  activate(nodes) %>% 
+  mutate(centrality = centrality_degree())
+
+
+
+
+ggraph(grafo2,  layout = 'linear', circular = TRUE) +
+  geom_edge_link(alpha = .2, color = "white") +
+ # geom_node_point(aes(size = centrality, color = centrality, alpha = .7)) +
+  geom_node_point(aes(color = centrality, size = 10, alpha =1)) +
+  geom_node_text(aes(label = name,  color = centrality), angle = 45, vjust = 1) +
+  scale_color_viridis_c(option = "B") +
+  theme_graph() +
+  theme(legend.position = "none", 
+        panel.background = element_rect(fill = "#00A18E")) +
+  labs(title = "La conversación de #LatinR2019 en Twitter")
+
+```
+
+[Zoom](https://github.com/TuQmano/data_TuQmanoR/blob/master/latinr_network.png) al grafo. 
+
+Ya pasaron Buenos Aires (2018) y Santiago (2019). Llega el turno de `LatinR2020` en Montevideo. 
+

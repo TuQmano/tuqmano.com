@@ -1,0 +1,50 @@
+baseurl = "https://tuqmano.com/"
+languageCode = "en-us"
+title = "TuQmanoR"
+theme = "hugo-lithium"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
+[[menu.main]]
+    name = "El TuQmano"
+    url = "/about"
+[[menu.main]]
+    name = "TuQland"
+    url = "https://tuqmano.tumblr.com/"
+[[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/TuQmano"
+[[menu.main]]
+    name = "Twitter"
+    url = "https://twitter.com/tuqmano"
+[[menu.main]]
+    name = "Research"
+    url = "https://www.researchgate.net/profile/Juan_Ruiz_Nicolini"
+[[menu.main]]
+    name = "Blog"
+    url = "/post"    
+[[menu.main]]
+    name = "polAr"
+    url = "https://electorarg.github.io/polAr/"     
+
+[params]
+    description = "Datos + R "
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.12.0"
+    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
+    MathJaxVersion = "2.7.5"
+
+    [params.logo]
+    url = "logo.png"
+    width = 50
+    height = 50
+    alt = "Logo"
+

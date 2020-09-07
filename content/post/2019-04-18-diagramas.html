@@ -1,0 +1,69 @@
+---
+title: diag`R`amas
+author: TuQmano
+date: '2019-04-18'
+slug: diagramas
+categories: []
+tags: []
+---
+
+
+
+<p>Ayer participé en el segundo <strong>#MiércolesDeDatos</strong>, que replica el desafío semanal <a href="https://twitter.com/hashtag/tidytuesday">#TidyTuesday</a> de su hermano anglófono por iniciativa de @<a href="https://twitter.com/R4DS_es/status/1115231541909762048">R4DS_es</a>, quienes colaboran para hacer accesible <em>la biblia</em> de la comunidad datera de <code>R</code> para la comunidad hispanoparlante.</p>
+<p>El proyecto de ayer consitía en hacer un análisis de datos y visualización con información de los libros de <em>Game of Thrones</em>. Esto fue lo que <a href="https://twitter.com/TuQmano/status/1118649665455644673">compartí</a></p>
+<p>Aproveché los datos de este #MiércolesDeDatos para probar una de las <em>features</em> que incluye <code>ggforce</code> (el <em>acelerador</em> de <code>ggplot</code> creado por <a href="https://ggforce.data-imaginist.com/">Thomas Lin Pedersen</a>).</p>
+<p><strong>Qué tipo de gráfico es éste?</strong></p>
+<p>El mismo Pedersen (cientista de datos en <code>RStudio</code> - @<a href="https://twitter.com/thomasp85">thomasp85</a> en Twitter) señala que hay una familia de estas figuras con nombres distintos. Y destaca cuales son para él las diferencias y particularidades de cada una de esas nomenclaturas (<em>Sankey</em>, <em>Alluvial</em> y <em>Parrallel Sets</em>).</p>
+<p>En sus palabras (traducidas) sería algo así:</p>
+<blockquote>
+<p>Hay un poco de confusión en la nomenclatura con esto. Insistiré en que los diagramas de Sankey son específicamente para flujos (y, a menudo, emplean una posición más suelta de los ejes) y los diagramas aluviales son para seguir los cambios temporales, pero todos podemos ser amigos, no importa cómo se llame.</p>
+</blockquote>
+<hr />
+<p>Ya hace algún tiempo empecé a jugar con gráficos de este tipo. Se me ocurren rápido algunos ejemplos:</p>
+<div id="sankey" class="section level3">
+<h3>SANKEY</h3>
+<p>En primer lugar unos gráficos que fueron producidos con <em>SankeyMatic</em> (una recomendación de <a href="https://twitter.com/Crst_C/">Crst_C</a>).</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*cBOjBltyQQhMC2tYUyE2AQ.png" width="700" height="700" /></p>
+<p>(El ejercicio buscaba ilustrar el origen partidario de los votos de una alianza. El análisis completo <a href="https://medium.com/pol%C3%ADtica-elecciones/corrientes-algunos-polvos-que-no-ser%C3%A1n-lodos-8273184a828e">acá</a>).</p>
+</div>
+<div id="ggalluvial" class="section level3">
+<h3><code>ggalluvial</code></h3>
+<p>En segundo lugar intenté rehacer un gráfico hecho con <a href="http://sankeymatic.com/"><em>SankeyMatic</em></a> desde <code>R</code>, procurando reproducibilidad. <a href="https://twitter.com/TuQmano/status/1019543981406019586">Acá el original</a>, abajo la versión reproducible:</p>
+<p><img src="https://github.com/TuQmano/Electoral_Forensics/raw/master/Aportes_PBA_2017/Plot3.png" width="900" height="700" /></p>
+<p>El ejericio buscaba ilustrar como se distribuyeron las fuentes de finanicmiento privada de partidos políticos en la elección nacional de 2017 en la Provincia de Buenos Aires. El análisis completo <a href="https://github.com/TuQmano/Electoral_Forensics/tree/master/Aportes_PBA_2017">acá</a>.</p>
+</div>
+<div id="parrallel-sets" class="section level3">
+<h3><em>Parrallel Sets</em></h3>
+<p>Ayer completé el trio con el ejemplo de <em>GoT</em> usando el <code>geom_parrallel_sets</code> de <code>ggforce</code>. Respecto de esta variante Pedersen agrega que:</p>
+<blockquote>
+<p>El problema principal es que los datos para los gráficos de conjuntos paralelos generalmente no se representan muy bien en el formato tidy esperado por ggplot2, por lo que ggforce proporciona una función para obtener con ese formato.</p>
+</blockquote>
+<p>Esta función amiga es <code>gather_set_data(a:b)</code>, la cual selecciona las variables que queremos incluir en nuestros ejes. Genera nuevas variables llamadas <code>id</code>, <code>x</code>, <code>y</code>. Junto con <code>value</code> - el conteo de personajes por cada uno de los grupos que definimos- y <code>Lealtad</code>, que es la variable que usamos para definir los colores de las casas de <em>GoT</em>, tenemos toda la información.</p>
+<p>El código completo y el plot son los siguiente:</p>
+<pre class="r"><code>library(tidyverse)
+library(ggforce)
+library(ggthemes)
+
+#GoT PLOT - #MiércolesDeDatos
+readr::read_csv(&quot;https://raw.githubusercontent.com/cienciadedatos/datos-de-miercoles/master/datos/2019/2019-04-17/personajes_libro.csv&quot;) %&gt;%  #CARGAMOS DATA SET
+  select(2:4) %&gt;%  # SELECCIONAMOS COLUMNAS CON DATOS QUE VAMOS A USAR
+  group_by(lealtad, genero, noble) %&gt;%   # AGRUPAMOS POR TRES VARIABLES
+  mutate(value = n()) %&gt;%  # CONTAMOS CUANTOS PERSONAJES HAY POR GRUPO
+  ungroup() %&gt;% 
+  mutate(noble = ifelse(noble == 1, &quot;Noble&quot;, &quot;Plebeyo&quot;), 
+         genero = ifelse(genero == &quot;masculino&quot;, &quot;H&quot;, &quot;M&quot;)) %&gt;% 
+  rename(&#39;Genero&#39; = &#39;genero&#39;, 
+         &#39;Status&#39; = &#39;noble&#39;, 
+         &#39;Lealtad&#39; = &#39;lealtad&#39;) %&gt;% 
+  gather_set_data(2:3) %&gt;%  # TRANSFORMACION TIDY DE PARRALLEL SETS (ggforce)
+ggplot(aes(x, id = id, split = y, value = value)) + #  INICIA GRAFICO
+  geom_parallel_sets(aes(fill = Lealtad), alpha = 0.5, axis.width = 0.1) +
+  geom_parallel_sets_axes(axis.width = 0.1) +
+  geom_parallel_sets_labels(colour = &#39;white&#39;) +
+  theme_fivethirtyeight() +
+  theme(axis.text.y = element_blank()) +
+  labs(title = &quot;Genero y Status de personajes de GoT&quot;, 
+       subtitle = &quot;#DatosDeMiércoles (por @TuQmano)&quot;, 
+       caption = &quot;Datos de @R4DS_es&quot;)</code></pre>
+<p><img src="/post/2019-04-18-diagramas_files/figure-html/CODE%20GOT-1.png" width="672" /></p>
+</div>

@@ -1,0 +1,267 @@
+---
+title: InteRacciones en twitteR
+author: tuqmano
+date: '2019-11-11'
+slug: interacciones-en-twitter
+categories: []
+tags: []
+---
+
+
+**Análisis realizado junto a [Camila](https://twitter.com/chig4_) Higa [^1]**
+
+[^1]: Un trabajo del equipo de datos de [mentaComunicación](http://mentacomunicacion.com.ar/bigdata/). 
+
+---
+
+Twitter es la plataforma preferida para el análisis de datos políticos en redes. Hay por lo menos dos razones que lo explican: (a) es allí donde la mayoría de los dirigentes políticos se expresan (y, por ende, donde el público que consume información política interactúa); y (b) es la red que disponibiliza libremente grandes volumenes de información. 
+
+## Trump, el presidente _twittero_ 
+
+>"*Donald Trump usa Twitter como ningún otro jefe de estado*" -**YouGob**
+
+Aunque desde la administración Obama ya se había incorporado la plataforma como un mecanismo más del flujo comunicacional, los modos (y mensajes) disruptivos de Trump utilizando Twitter para comunicar llamaron rápidamente la atención. No solo del gran público, sino también de investigadores y analistas.
+
+"_El presidente de los Estados Unidos resuelve comunicar sus decisiones a través de Twitter_", sostiene [Tomás Aguerre](https://twitter.com/TomiOlava) ([acá](http://papel.revistafibra.info/trump-gobierno-twitter/)). Sobre ello le preguntó a [Eugenia Giraudy](https://twitter.com/EugeniaGiraudy), entonces investigadora de ***YouGob*** donde trabajó en un [proyecto](https://tweetindex.yougov.com/) dedicado a relevar la reacción que generan las publicaciones del presidente de EE.UU. sobre una muestra representativa de votantes. 
+
+***FiveThirtyEight*** abordó la cuestión desde otro ángulo: no ya sobre el impacto que el contenido de los tuits tiene sobre la opinión de los lectores/votantes, sino del modo en que los demás usuarios interactuan con esas mismas publicaciones con el objetivo de responder una simple pregunta: ¿_Es Trump el peor tuitero político?_ [**Spoilert alert**: no lo es](https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/) . 
+
+![](https://fivethirtyeight.com/wp-content/uploads/2017/10/roedermehta-tweets-1.png?w=575)
+
+# El mal _ratio_ y la grieta argentina en Twitter
+
+El análisis de *FiveThirtyEight* sobre la *tuitosfera* política de EE.UU. parte de unos supuestos básicos: 
+
+1. Les usuaries interactúan con el contenido de tres formas [^2]: 
+
+[^2]: Existe otra acción posible - citar tweet - pero se entiende que esta es una nueva intervención sobre una publicación existente y no simplemente una reacción.
+
+* `*fav*` (me gusta - MG): la acción que menos exige / expone al que interactúa. La reacción más común en Twitter. 
+* `*retweet*` (re publicación - RT): mantiene la economía de esfuerzo del anterior, pero hace más visible la interacción con el resto. 
+* `*reply*` (respuesta - RP): el tipo de reacción que implica mayor esfuerzo al tener que elaborar una respuesta. 
+
+2. ***"Si tuviste más respuestasa a un tuit que favs o RT, entonces la cagaste"***. Cuando el `RATIO` (originalmente descripto [acá](https://www.esquire.com/news-politics/news/a54440/twitter-ratio-reply/)) toma valores altos es indicador de que la recepción del tuit fue muy mala. 
+
+ $$RATIO = \frac{Respuestas}{Favs + RT} *100$$
+
+Con estas ideas en mente Luciano Galup y J.P. Pilorget replicaron el análisis para el caso argentino y publicaron [_La Grieta Graficada_](https://www.perfil.com/noticias/politica/la-grieta-graficada.phtml). El análisis de los tuits agrupados por espacio político muestra que también en Twitter "aquellos que no forman parte de uno de los dos polos del debate la sufren y encuentran mucho más rechazo en sus publicaciones". 
+
+La forma de graficarlo para visualizarlo es también simple a partir de gráficos ternarios. Estos muestran la relación entre las tres variables (`retweet`, `fav` y `respuesta`), donde los vértices del triángulo representan a cada una de ellas. Cuanto más se acerca un punto (un tweet) a un vértice, mayor es el valor de esa variable respecto de las otras. Por ende, cuanto más se expande la nube de puntos de la pared derecha (segmento que une los `fav` y `rt`) más alto será el valor del `RATIO`. 
+
+![](https://raw.githubusercontent.com/TuQmano/data_TuQmanoR/master/grieta.png){width=100%}
+
+# Los ratios de la campaña presidencial de Argentina[^3]:
+
+[^3]: Una primera versión de este análisis se presentó durante las *[II Jornadas de Comunicación Estratégica](https://twitter.com/JornadaComUNLZ)* de la Universidad Nacional de Lomas de Zamora.
+
+
+A lo largo de la campaña presidencial empezamos a juntar una gran cantidad de publicaciones de los candidatos en Twitter. Los datos que acá presentamos parecen confirmar la imagen que ya teníamos del ecosistema político argentino en la red del pajarito: los protagonistas principales de cada uno de los dos polos principales tienen valores relativamente bajos del `RATIO`. O, como se argumentaba en *La Grieta Graficada*, "***las audiencias a las que esos tweets interpelan apoyan en gran medida la forma de interpretar el mundo de los contenidos que se publican***". 
+
+
+```{r ratio1_gral, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+library(tidyverse)
+library(ggtern)
+library(scales)
+library(lubridate)
+library(stringr)
+library(plotly)
+
+options(scipen=999)
+
+tuits <- read_csv("../../static/data/tweets.csv") %>% 
+  mutate(date = as.Date(date))
+
+
+tuits <- tuits %>% 
+  select(date, username, tweet, retweets_count,replies_count,likes_count) %>% 
+  mutate(ratio = round(replies_count/(retweets_count+likes_count)*100, digits=1),
+         label = ratio)
+
+
+
+tuits %>% 
+  filter(date >= "2019-08-12" & date <= "2019-10-28") %>% 
+  ggtern(aes(x = replies_count,
+             y= retweets_count,
+             z = likes_count, colour = username, fill= username))+
+  geom_point(alpha = .7, size= 2.5) +
+  labs(title = 'Ratio de tuits',
+       colour = 'Usuario', x = "RP", y = "RT", z = "MG") +
+  scale_color_manual(values = c(kicillofok = "#00aeec", 
+                                alferdez = "#00aeec", 
+                                mariuvidal = "#ffcf02",
+                                mauriciomacri = "#ffcf02")) +
+  scale_fill_manual(values = c(kicillofok = "#00aeec", 
+                               alferdez = "#00aeec", 
+                               mariuvidal = "#ffcf02", 
+                               mauriciomacri = "#ffcf02")) +
+  theme_minimal() +
+  theme(axis.text = element_blank(), 
+        legend.position = 'none')
+
+
+
+```
+
+El gráfico anterior muestra todos los tuits que se publicaron durante la campaña desde las cuentas de los principales candidatos de cada lado de la grieta. La primera foto ya muestra los puntos cercanos a la pared derecha. 
+
+Un ejericio posterior fue dividir estas muestras el día de las P.A.S.O (11 de agosto) para evaluar si los resultados desfavorables de los oficialismos en las elecciones afectaron de alguna manera el comportamiento de los usuarios de twitter con las publicaiones de los candidatos. 
+
+La siguiente tabla resume el valor del `ratio típico` (mediana) para cada tuit/usuario. Un primer elemento a destacar (más allá de que en general los valores son relativamente bajos) es que las cuentas tuvieron un rendimiento similar o mejor que en la primera etapa de la campaña electoral. Incluso, los oficialismos (perderdores de las elecciones) obtuvieron valores más pequeños en el segundo momento. 
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+tuits %>%
+  filter(date >= "2019-06-22" & date <= "2019-10-28") %>% 
+  mutate(periodo = if_else(date<="2019-08-11","Campaña P.A.S.O","Campaña Generales")) %>% 
+  mutate(ratio= round(replies_count/(retweets_count+likes_count)*100,digits = 1)) %>% 
+  group_by(username, periodo) %>% 
+  summarise_at(vars(ratio),funs(median(.))) %>% 
+  spread(periodo,ratio) %>% 
+  select(username, `Campaña P.A.S.O`,`Campaña Generales`)   %>% 
+  kableExtra::kable()
+
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+tuits <- read_csv("../../static/data/tweets.csv") %>% 
+  mutate(date = as.Date(date))
+
+
+tuits <- tuits %>% 
+  select(date, username, tweet, retweets_count,replies_count,likes_count) %>% 
+  mutate(ratio = round(replies_count/(retweets_count+likes_count)*100, digits=1),
+         label = ratio)
+
+tuits %>%
+  filter(date >= "2019-06-22" & date <= "2019-10-28") %>% 
+  mutate(periodo = if_else(date<="2019-08-11","Campaña P.A.S.O","Campaña Generales")) %>%
+  mutate(periodo = factor(periodo,levels = c("Campaña P.A.S.O", "Campaña Generales"))) %>% 
+  arrange(desc(periodo)) %>% 
+  ggtern(aes(x = replies_count, y= retweets_count, z = likes_count, colour = username, fill= username)) +
+  geom_point(alpha = .7) +
+  labs(title = 'Reacciones a los tuits según usuario por período',
+       colour = 'Usuario', x = "RP", y = "RT", z = "MG") +
+  scale_color_manual(values = c(kicillofok = "#00aeec",alferdez = "#00aeec", mariuvidal = "#ffcf02", mauriciomacri = "#ffcf02"))+
+  scale_fill_manual(values = c(kicillofok = "#00aeec",alferdez = "#00aeec", mariuvidal = "#ffcf02", mauriciomacri = "#ffcf02")) +
+  facet_grid(periodo ~ username) +
+  theme_minimal() +
+  theme(axis.text = element_blank(), legend.position = 'none', axis.title = element_text(size = 8)) 
+
+
+
+```
+
+
+Por último, podemos analizar el valor de ratio de cada uno de los tuits y su contenido en una serie de tiempo. La línea punteada marca la división temporal entre la campaña de las P.A.S.O. y la elección General. De esta manera podemos explorar el contenido de publicaciones que se alejan sustantivamente de los valores típicos expuestos. Por lo general se trata de publicaciones en las que usuarios identificados con el polo político opuesto responden activamente.  
+
+```{r interactivo_TS, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+tuits <- read_csv("../../static/data/tweets.csv") %>% 
+  mutate(date = as.Date(date)) %>% 
+  filter(username %in% c("kicillofok", "mariuvidal"))
+
+
+
+tuits <- tuits %>%
+  filter(date >= "2019-06-22" & date <= "2019-10-28") %>% 
+  mutate(ratio=round(replies_count/(retweets_count+likes_count)*100,digits = 1)) %>%
+  mutate(interacciones=replies_count+retweets_count+likes_count)
+
+date2 <- c(as.Date("2019-08-12"))  #plotly solo reconoce numeric  .. entonces tengo que crear un df para que pueda graficarla
+
+detach("package:ggtern", unload = TRUE)
+
+#unload("ggtern")
+
+tuitsPlotInteractive <- ggplot(tuits,aes(date, ratio, colour = username)) +
+  geom_jitter(aes(text = paste0(
+    "Fecha: ", date, "\r\n",
+    "Ratio: ", ratio, "\r\n",
+    str_wrap(string = paste0("Tuit: ", tweet, "\r\n"), 
+             width = 16,
+             indent = 0,
+             exdent = 0)), 
+    group = username, fill = username, size=interacciones), shape = 21, alpha=0.7) +
+  # scale_size_area(max_size = 10) +
+  geom_smooth(method = lm,se = F, show.legend = F) +
+  geom_vline(aes(xintercept=as.numeric(date2)),linetype=4, colour="red") + 
+  scale_x_date(breaks = "7 days", labels = date_format("%d-%m")) +
+  labs(title = 'Ratio de cada tuit - Axel Kicillof y M. Eugenia Vidal',
+       colour = '', x = "", y = "ratio") +
+  facet_wrap(~username, ncol=1) +
+  scale_color_manual(values  = c("kicillofok"="#00aeec","mariuvidal"="#ffcf02")) +
+  scale_fill_manual(values  = c("kicillofok"="#00aeec","mariuvidal"="#ffcf02")) +
+  theme_minimal() +
+  theme(legend.position = 'none', axis.title = element_text(family = 'AvenirNext LT Pro Regular',size = 8),
+        axis.text.x = element_text(size = 6)) 
+
+ggplotly(tuitsPlotInteractive,tooltip = "text") 
+```
+
+
+
+
+```{r interactivo_Presi, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+tuits <- read_csv("../../static/data/tweets.csv") %>% 
+  mutate(date = as.Date(date)) %>% 
+  filter(username %in% c("mauriciomacri", "alferdez"))
+
+
+
+tuits <- tuits %>%
+  filter(date >= "2019-06-22" & date <= "2019-10-28") %>% 
+  mutate(ratio=round(replies_count/(retweets_count+likes_count)*100,digits = 1)) %>%
+  mutate(interacciones=replies_count+retweets_count+likes_count)
+
+date2 <- c(as.Date("2019-08-12"))  #plotly solo reconoce numeric  .. entonces tengo que crear un df para que pueda graficarla
+
+
+tuitsPlotInteractive <- ggplot(tuits,aes(date, ratio, colour = username)) +
+  geom_jitter(aes(text = paste0(
+    "Fecha: ", date, "\r\n",
+    "Ratio: ", ratio, "\r\n",
+    str_wrap(string = paste0("Tuit: ", tweet, "\r\n"), 
+             width = 16,
+             indent = 0,
+             exdent = 0)), 
+    group = username, fill = username, size=interacciones), shape = 21, alpha=0.7) +
+  # scale_size_area(max_size = 10) +
+  geom_smooth(method = lm,se = F, show.legend = F) +
+  geom_vline(aes(xintercept=as.numeric(date2)),linetype=4, colour="red") + 
+  scale_x_date(breaks = "7 days", labels = date_format("%d-%m")) +
+  labs(title = 'Ratio de cada tuit - Alberto Fernández y Mauricio Macri',
+       colour = '', x = "", y = "ratio") +
+  facet_wrap(~username, ncol=1) +
+  scale_color_manual(values  = c("alferdez"="#00aeec","mauriciomacri"="#ffcf02")) +
+  scale_fill_manual(values  = c("alferdez"="#00aeec","mauriciomacri"="#ffcf02")) +
+  theme_minimal() +
+  theme(legend.position = 'none', axis.title = element_text(family = 'AvenirNext LT Pro Regular',size = 8),
+        axis.text.x = element_text(size = 6)) 
+
+ggplotly(tuitsPlotInteractive,tooltip = "text") 
+```
+
+----
+
+# Análisis y Datos
+
+* Para levantar información de Twiter facilmente desde `RStudio` se puede utilizar la liberería [`rtweet`](https://rtweet.info/)
+
+```{r rtweet, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, eval = F}
+
+  
+  library(rtweet)
+
+consulta <- get_timelines(user = c("mauriciomacri", "alferdez", "kicillofok", "mariuvidal"), n = 100)
+
+
+```
+
+* Código y datos para reproducir análisis de viz disponible [acá](https://github.com/TuQmano/data_TuQmanoR/tree/master/ternarios_post)
+
+
+
