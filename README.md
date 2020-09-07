@@ -1,0 +1,2 @@
+# tuqmano.com
+Netlify blog
