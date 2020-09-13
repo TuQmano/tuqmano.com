@@ -23,7 +23,7 @@ _As a political scientist, my work focuses on electoral studies, political parti
 
 
 
-I wrote `{polAr}`[package](https://electorarg.github.io/polAr/): *Argentine Politics using R*
+I wrote `{polAr}` [package](https://electorarg.github.io/polAr/): *Argentine Politics using R*
 
 ---
 
