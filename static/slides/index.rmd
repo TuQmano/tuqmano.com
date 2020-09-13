@@ -16,11 +16,11 @@ output:
 
 > **LatinR**: *Inteligencia Electoral* 
 
-[Slides](https://docs.google.com/presentation/d/1e78jzqMum2vjT-vQTrhoWJrroPLi8EgMPBXjoKJ7acA/edit#slide=id.p) | [`r emojifont::emoji("computer")` App](http://inteligenciaelectoral.mentacomunicacion.com.ar/)
+[Slides](https://docs.google.com/presentation/d/1e78jzqMum2vjT-vQTrhoWJrroPLi8EgMPBXjoKJ7acA/edit#slide=id.p) | [Abstract](https://github.com/LatinR/presentaciones-LatinR2019/blob/master/presentaciones/LatinR2019_paper_15.pdf) | [`r emojifont::emoji("computer")` App](http://inteligenciaelectoral.mentacomunicacion.com.ar/) 
 
-> **XIV Congreso Nacional de Ciencia Política**: *Herramientas interactivas para políticas y campañas electorales usando grandes volúmenes de datos* (Simposio Estudios Electorales. Panel: Big data & Política) 
+> **XIV Congreso Nacional de Ciencia Política**: *Herramientas interactivas para políticas y campañas electorales usando grandes volúmenes de datos* (Panel: Big data & Política - Simposio Estudios Electorales) 
 
-[Slides](https://www.researchgate.net/publication/334573215) | [`r emojifont::emoji("computer")` App](http://socioeconomico.mentacomunicacion.com.ar/)
+[Slides](https://www.researchgate.net/publication/334573215) | [`r emojifont::emoji("computer")` App](http://socioeconomico.mentacomunicacion.com.ar/) | [`r emojifont::emoji("memo")` Conference Paper](https://www.researchgate.net/publication/334572755) 
 
 
 ### 2018
