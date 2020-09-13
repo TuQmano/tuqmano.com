@@ -41,6 +41,11 @@ library(tidyverse)
 xaringanExtra::use_panelset()
 ```
 
+```{r xaringan-broadcast, echo=FALSE}
+xaringanExtra::use_broadcast()
+```
+
+
 
 
 ```{r xaringan-logo, echo=FALSE}
@@ -56,8 +61,6 @@ background-position: 50% 100%
 background-size: 30%
 
 
-# Herramientas y Datos para el Análisis Político de Argentina
-
 #### JUAN PABLO RUIZ NICOLINI
 
 #### Universidad Torcuato Di Tella
@@ -67,6 +70,18 @@ background-size: 30%
 ##### [`r icon::fa("twitter")`](https://twitter.com/TuQmano)  [TuQmano](https://twitter.com/TuQmano) 
 
 ##### [`r icon::fa("github")`](https://github.com/tuqmano) [TuQmano](https://github.com/tuqmano)
+
+
+### Octubre, 2020
+
+???
+
+* politologo y cientista de datos
+
+* HOY vengo a mostrar un producto que comparte la historia de su desarrollo con LatinR
+
+
+
 
 ---
 class: hide_logo
@@ -93,23 +108,36 @@ knitr::include_graphics("polar_slides_files/img-manual/bsas.PNG")
 
 ]
 
+???
+
+* Compartir mi primera experiencia como 'desarrollador' diseñando grillas para distritos de ARG
+
+* Que con el tiempo terminaron siendo contribuciones en el repo oficial de GEOFACET
+
+
+* Y ESTE AÑO TERMINÓ SIENDO MI PRIMER PAQEUTE (DISPONIBLE EN GITHUB)
+
+* DISPONIBILIZANDO GRILLAS Y FUNCIONES AUXILIARES COMO DICCIONARIO DE CODIGOS DISTRITALES Y RECODIFICACION DE IDS
+
 --
 
 
 .pull-right[
 
-`r emojifont::emoji("package")`**geofaceteAR (2020)**
+`r emojifont::emoji("package")` **geofaceteAR (2020)**
 
-[https://github.com/electorArg/geofaceteAR](https://github.com/electorArg/geofaceteAR)
+##### [https://github.com/electorArg/geofaceteAR](https://github.com/electorArg/geofaceteAR)
 
 ```{r geofaceteAr,echo=F, fig.align='center'}
 
   knitr::include_graphics("polar_slides_files/img-manual/geofacetear.PNG")
 
 ```
-
-
 ]
+
+
+
+
 
 ---
 class: hide_logo
@@ -129,7 +157,23 @@ knitr::include_graphics("polar_slides_files/img-manual/ie.PNG")
 
 Presentación | _Shinny_ app
 
+_(con Juan Pablo Pilorget)_
+
 ]
+
+
+
+???
+
+* en SANTIAGO tuve posibilidad de presentar 1ra Version de INTELIGENICA ELECTORAL
+
+* limpieza y procesamiento de un gran volumen de datos de elecciones presidenciales
+
+
+* además de la posibliidad del tutorial de desarrollo de paquete con Hadley Wickham 
+
+* condición necesaria tanto de GEOFACETEAR como de lo que acá vengo a presentar
+
 
 --
 
@@ -147,9 +191,6 @@ Tutorial
 
 ]
 
-
-
-
 ---
 class: hide_logo
 
@@ -165,6 +206,11 @@ background-size: 20%
 ```
 
 
+???
+
+* AUNQUE CON ALGUNOS CAMBIOS... COMO TODOS SABEMOS
+
+
 ---
 
 
@@ -173,6 +219,11 @@ background-size: 20%
 ### Análisis de Datos Políicos de Argentina
 
 #### `r emojifont::emoji("package")``{polAr}`  facilita el acceso a datos políticos de Argentina y provee herramientas para el análisis explortario, descarga, cálculos y visualización de la información.
+
+???
+
+* HOY VENGO A PRESETNAR polAr: paquete que facilita herramientas y el acceso a datos para el análisis político de argentina 
+
 
 --
 
@@ -192,6 +243,11 @@ background-size: 20%
 
 `r emojifont::emoji("envelope")` resultados electorales;
 
+???
+
+* PARA ESTOS TOPICOS, EL PAQEUTE OFRECE 3 FAMILIAS DE FUNCIONES
+
+
 --
 
 #### Tipos de tareas
@@ -206,6 +262,7 @@ background-size: 20%
 --
 
 `r emojifont::emoji("bar_chart")` VISUALIZAR: funciones `plot_*()`, `map_*()`,`tabulate_*()`
+
 
 ---
 
@@ -242,6 +299,9 @@ get_speech(year = 1946,
            raw = T) %>% #<<
   pull(discurso)
 ```
+
+`r emojifont::emoji("tv")` **_MinaR los discuRsos pResidenciales_** (con [Camila Higa](https://twitter.com/chig4_) y [Lucas Enrich](https://twitter.com/lucasenrich); LatinR, 2020)
+
 ]
 
 
@@ -255,6 +315,7 @@ get_speech(year = 1946,
 get_speech(year = 1946) %>% 
 plot_speech() #<<
 ```
+
 ]
 
 .pull-right[
@@ -363,19 +424,26 @@ get_grid(district = "TUCUMAN") %>%
 
 .pull-left[
 
-```{r geo , eval = F}
+```{r geo , eval = F, warning=FALSE}
 get_geo(geo =  "TUCUMAN") %>%  #<<
   ggplot2::ggplot() +
-  ggplot2::geom_sf()
+  ggplot2::geom_sf() +
+  ggplot2::geom_sf_label(aes(label = coddepto))
+
+
+
 ```
 ]
 
 .pull-right[
 
-```{r geo plot, echo = F}
-get_geo(geo =  "TUCUMAN") %>% 
+```{r geo plot, echo = F, warning=FALSE}
+
+get_geo(geo =  "TUCUMAN") %>%  #<<
   ggplot2::ggplot() +
-  ggplot2::geom_sf(aes (label = coddepto))
+  ggplot2::geom_sf() +
+  ggplot2::geom_sf_label(aes(label = coddepto))
+
 
 ```
 ]
@@ -482,7 +550,7 @@ get_election_data(district = "caba", category = "dip",
 
 #### Otros cálculos en la familia de funciones  `compute_*`: 
 
- `compute_nep()`, `compute_competitiveness()`, `compute_disproportion()`, `compute_concentration()`
+##### `compute_nep()`, `compute_competitiveness()`, `compute_disproportion()`, `compute_concentration()`
 
 ]
 
@@ -496,14 +564,19 @@ get_election_data(district = "caba", category = "dip",
 
 #### Juan Pablo Ruiz Nicolini | **@TuQmano**  | LatinR 2020 
 
-## Robot electoral en Twitter
+##  `r emojifont::emoji("robot")` electoral  
+##### (con [Camila Higa](https://twitter.com/chig4_) - [mentaComuniación](https://twitter.com/menta_arg))
 
 ```{r polar_bot, echo = FALSE, fig.align='center', out.width="50%"}
  knitr::include_graphics("polar_slides_files/img-manual/bot.PNG")
 ```
 
+#### -> [`r icon::fa("twitter")`](https://twitter.com/pol_Ar_bot) [twitter.com/pol_Ar_bot](https://twitter.com/pol_Ar_bot) 
 
-###  [`r icon::fa("twitter")`](https://twitter.com/pol_Ar_bot) [twitter.com/pol_Ar_bot](https://twitter.com/pol_Ar_bot) 
+???
+
+* ADEMAS de PolArBot UN PROYECTO LATERAL, BASADO EN LOS VERBOS PARA  ELECTORALES ES POL AR BOT
+
 
 ---
 
@@ -511,7 +584,10 @@ get_election_data(district = "caba", category = "dip",
 
 ### Análisis de Datos Políicos de Argentina
 
-# GRACIAS!!!
+#### SLIDES `r icon::fa("hand-point-down")`
+
+#### [https://www.tuqmano.com/slides/polar_slides.html](https://www.tuqmano.com/slides/polar_slides.html)
+
 
 
 .pull-left[
@@ -533,7 +609,7 @@ get_election_data(district = "caba", category = "dip",
 
 ]
 
-
+## GRACIAS!!!
 
 
 
