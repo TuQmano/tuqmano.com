@@ -9,6 +9,21 @@ output:
 
 > *Análisis de Datos Políicos de Argentina* - [LatinR 2020](https://www.tuqmano.com/slides/polar_slides.html).
 
+### 2019
+
+> *Inteligencia Electoral* - [LatinR 2019](https://docs.google.com/presentation/d/1e78jzqMum2vjT-vQTrhoWJrroPLi8EgMPBXjoKJ7acA/edit#slide=id.p).
+
+> *Herramientas interactivas para políticas y campañas electorales usando grandes volúmenes de datos* - [Simposio Estudios Electorales del XIV Congreso Nacional de Ciencia Política. Panel: Big data & Política](https://www.researchgate.net/publication/334573215)
+
+
+
+### 2018
+
+> *Geofaceting Argentina* - [LatinR 2018](https://www.researchgate.net/publication/327382101_Geofaceting_Argentina_LatinR_2018).
+
+### 2017
+
+> *Enchufes, espejos y tijeras: Efectos del diseño de las boletas sobre el comportamiento electora* - [Seminario de Investigación - Facultad Latinomaericana de Ciencias Sociales](https://www.researchgate.net/publication/322642019).
 
 
 
