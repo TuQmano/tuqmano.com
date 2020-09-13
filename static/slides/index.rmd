@@ -1,0 +1,10 @@
+---
+title: "Slides  - Presentaciones"
+output: 
+ html_document:
+  css: "xaringan-themer.css"
+---
+
+### 2020
+
+> *Análisis de Datos Políicos de Argentina* - [LatinR 2020](https://www.tuqmano.com/slides/polar_slides.html).
