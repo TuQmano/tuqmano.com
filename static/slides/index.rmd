@@ -5,11 +5,16 @@ output:
   css: "xaringan-themer.css"
 ---
 
-### 2020
 
-> **LatinR**: *Análisis de Datos Políicos de Argentina* 
+```{r, echo=F}
 
-[Slides](https://www.tuqmano.com/slides/polar_slides.html) | [Abstract](https://www.tuqmano.com/slides/polar_slides.html) | [`r emojifont::emoji("package")` {polAr}](https://electorarg.github.io/polAr/).
+#### 2020
+#### > **LatinR**: *Análisis de Datos Políicos de Argentina* 
+#
+#[Slides](https://www.tuqmano.com/slides/polar_slides.html) | #[Abstract](https://www.tuqmano.com/slides/polar_slides.html) | #[`r emojifont::emoji("package")` #{polAr}](https://electorarg.github.io/polAr/).
+
+```
+
 
 
 ### 2019
