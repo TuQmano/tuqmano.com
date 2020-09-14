@@ -6,14 +6,16 @@ output:
 ---
 
 
-```{r, echo=F}
 
-#### 2020
-#### > **LatinR**: *Análisis de Datos Políicos de Argentina* 
-#
-#[Slides](https://www.tuqmano.com/slides/polar_slides.html) | #[Abstract](https://www.tuqmano.com/slides/polar_slides.html) | #[`r emojifont::emoji("package")` #{polAr}](https://electorarg.github.io/polAr/).
 
-```
+### 2020
+
+ > **LatinR**: *Análisis de Datos Políicos de Argentina* 
+
+[Slides]() | [Abstract]() | [`r emojifont::emoji("package")` {polAr}](https://electorarg.github.io/polAr/) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/).
+
+
+
 
 
 
@@ -32,7 +34,7 @@ output:
 
 > **LatinR**: *Geofaceting Argentina* 
 
-[Slides](https://www.researchgate.net/publication/327382101_Geofaceting_Argentina_LatinR_2018) | [Abstract](https://github.com/TuQmano/geofacet_ARG/blob/master/.LatinR/Geofaceting_Argentina_RuizNicolini.pdf) | [`r emojifont::emoji("package")` {geofaceteAR}](https://electorarg.github.io/geofaceteAR/).
+[Slides](https://www.researchgate.net/publication/327382101_Geofaceting_Argentina_LatinR_2018) | [Abstract](https://github.com/TuQmano/geofacet_ARG/blob/master/.LatinR/Geofaceting_Argentina_RuizNicolini.pdf) | [`r emojifont::emoji("package")` {geofaceteAR}](https://electorarg.github.io/geofaceteAR/) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/).
 
 
 ### 2017
