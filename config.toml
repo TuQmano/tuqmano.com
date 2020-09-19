@@ -28,7 +28,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "/post"    
 [[menu.main]]
     name = "polAr"
-    url = "https://electorarg.github.io/polAr/"     
+    url = "https://electorarg.github.io/polAr/" 
+[[menu.main]]
+    name = "CV"    
+    url = "https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/data/CV_Ruiz_Nicolini.pdf"
 
 [params]
     description = "Datos + R "
