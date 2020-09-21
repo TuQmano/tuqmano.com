@@ -32,7 +32,7 @@ output:
 
 ### 2019
 
-> **LatinR**: *Inteligencia Electoral* 
+> **LatinR**: *Inteligencia Electoral*  (con Juan Pablo Pilorget) 
 
 [Abstract](https://github.com/LatinR/presentaciones-LatinR2019/blob/master/presentaciones/LatinR2019_paper_15.pdf) | [`r emojifont::emoji("bar_chart")` Slides](https://docs.google.com/presentation/d/1e78jzqMum2vjT-vQTrhoWJrroPLi8EgMPBXjoKJ7acA/edit#slide=id.p) | [`r emojifont::emoji("computer")` App](http://inteligenciaelectoral.mentacomunicacion.com.ar/) 
 
