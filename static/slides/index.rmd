@@ -50,7 +50,7 @@ output:
 
 ### 2017
 
-> **FLACSO - México (Seminario de Investigación)**: *Enchufes, espejos y tijeras: Efectos del diseño de las boletas sobre el comportamiento electora* 
+> **FLACSO - México (Seminario de Investigación)**: *Enchufes, espejos y tijeras: Efectos del diseño de las boletas sobre el comportamiento electora* (con Juan Dodyk)
 
 [`r emojifont::emoji("bar_chart")` Slides](https://www.researchgate.net/publication/322642019) | [`r emojifont::emoji("memo")` Paper](https://www.researchgate.net/publication/322663247)
 
