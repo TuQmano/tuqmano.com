@@ -25,7 +25,7 @@ output:
  > **LatinR**: _#TuitómetroNacional: monitor de la conversación política en Argentina_ (con Camila Higa). 
 
 
-[Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/tuitometro/tuitometro.pdf) | [`r emojifont::emoji("bar_chart")` Slides](https://github.com/TuQmano/latinr2020/blob/master/slides/tuitometro/tuitometro.pdf) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/) | [`r icon::fa("film")` Video](https://www.youtube.com/watch?v=fNMwoLJ1iXQ&list=PL9-E3cL2KgKnixQ0u36DgCsGvOkOIo5D1).
+[Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/tuitometro/tuitometro.pdf) | [`r emojifont::emoji("bar_chart")` Slides](https://github.com/TuQmano/latinr2020/blob/master/slides/tuitometro/tuitometro.pdf) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/) | [`r icon::fa("film")` Video](https://www.youtube.com/watch?v=fNMwoLJ1iXQ&list=PL9-E3cL2KgKnixQ0u36DgCsGvOkOIo5D1) | [`r emojifont::emoji("computer")` App](http://tuitometro.mentacomunicacion.com.ar/).
 
 
 
