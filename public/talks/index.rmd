@@ -34,7 +34,8 @@ output:
 
 > **II Jornada de Comunicación Estratégica**: *Qué hace el público con la información?* 
 
-[`r emojifont::emoji("bar_chart")` Slides](https://docs.google.com/presentation/d/1G7WvEvOkHzXrOomiks8ahCegBrIQXtxCtxOA9VpXmxM/edit#slide=id.p) | [`r emojifont::emoji("vhs")` Video](https://youtu.be/Hga7rjnkLQA?t=1075)
+[`r emojifont::emoji("bar_chart")` Slides](https://docs.google.com/presentation/d/1G7WvEvOkHzXrOomiks8ahCegBrIQXtxCtxOA9VpXmxM/edit#slide=id.p) | [`r emojifont::emoji("vhs")` Video](https://youtu.be/Hga7rjnkLQA?t=1075) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2019/11/11/interacciones-en-twitter/).
+
 
 
 > **LatinR**: *Inteligencia Electoral*  (con Juan Pablo Pilorget) 
