@@ -30,6 +30,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "polAr"
     url = "https://electorarg.github.io/polAr/" 
 [[menu.main]]
+    name = "MetodosCiPol"
+    url = "https://tuqmano.github.io/MetodosCiPol"     
+[[menu.main]]
     name = "CV"    
     url = "https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/data/CV_Ruiz_Nicolini.pdf"
 
