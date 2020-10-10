@@ -22,7 +22,7 @@ tags: [LatinR]
 
 `LatinR` para mí representa lo mejor de la comunidad de `usuaRios`: apertura, predisposición para ayudar y colaborar y diversidad son pilares sobre los que se apoya la conferencia. Ejemplo de ello resultó la reunión de muches para trabajar en conjunto propuestas para la `rstudioconf::global(2021)`. Y creo también que LatinR demostró, por el gran trabajo de chairs, comité científico y organizador, que se puede hacer una conferencia potenciando la diversidad y la apertura a nuevos usuarios, que en general tienen mayores restricciones de todo tipo para ser parte. 	
 
-En términos peronalísimos, volví a disfrutar mucho de la conferencia. No solo por haber podido mostrar parte del trabajo que desarrollamos con excelentes compañeres; también por darme cuenta de que mucho de lo que nosotros pudimos avanzar se debe en buena medida al esfuerzo y trabajo de otres, de quienes aprendemos y nos inspiramos. Y saber que tenemos la posibilidad de contacto e intercambio fluído con elles, es una de las grandes cosas de esta comunidad (les `LatinR`'s, `RenBaires`, `eph`'s, *et al.*)	
+En términos personalísimos, volví a disfrutar mucho de la conferencia. No solo por haber podido mostrar parte del trabajo que desarrollamos con excelentes compañeres; también por darme cuenta de que mucho de lo que nosotros pudimos avanzar se debe en buena medida al esfuerzo y trabajo de otres, de quienes aprendemos y nos inspiramos. Y saber que tenemos la posibilidad de contacto e intercambio fluído con elles, es una de las grandes cosas de esta comunidad (les `LatinR`'s, `RenBaires`, `eph`'s, *et al.*)	
 
 
 
@@ -35,7 +35,7 @@ El contexto no impidió que se pudiera desarrollar una gran agenda, con tópicos
 En el marco del congreso se desarrollaron además una serie de talleres sobre [Expresiones Regulares](https://latin-r.com/cronograma/#session-1); desarrollo de [Shiny Apps](https://latin-r.com/cronograma/#session-2); uso de [R Markdown](https://latin-r.com/cronograma/#session-3); importación de [datos desde hojas de cálculo](https://latin-r.com/cronograma/#session-4); [enseñanza en línea](https://latin-r.com/cronograma/#session-5) y  [tutoriales interactivos](https://latin-r.com/cronograma/#session-009) y [machine learning](https://latin-r.com/cronograma/#session-6).	
 
 
-Alison Horst (`Rstudio`) estuvo en la exposición inaugural contando qué es "Aprender sin una red". Maëlle Salmon expuso cómo [bloguear desde R Markdown](https://bloguearrr.netlify.app/). 	
+Alison Presmanes Hill (`Rstudio`) estuvo en la exposición inaugural contando qué es "Aprender sin una red". Maëlle Salmon expuso cómo [bloguear desde R Markdown](https://bloguearrr.netlify.app/). 	
 
 Se desarrollaron también eventos asociados a la reproducibilidad de cógido, manuscritos y artículos ([ReproHack](https://latin-r.com/cronograma/#session-14)) y un panel de [accesibilidad e inclusión](https://latin-r.com/cronograma/#session-16).  	
 
@@ -57,7 +57,7 @@ The context did not prevent a great agenda from being developed, with diverse to
 In the framework of the congress, a series of workshops were also developed on [Regular Expressions](https://latin-r.com/cronograma/#session-1); [Shiny Apps](https://latin-r.com/cronograma/#session-2) development; use of [R Markdown](https://latin-r.com/cronograma/#session-3); [data import from spreadsheets](https://latin-r.com/cronograma/#session-4); [online teaching](https://latin-r.com/cronograma/#session-5); [interactive tutorials](https://latin-r.com/cronograma/#session-009) and [machine learning](https://latin-r.com/cronograma/#session-6). 	
 
 
-In the oppening session Alison Horst talked about what is "Learning without a net". Maëlle Salmon showed us how to [blog from R Markdown](https://bloguearrr.netlify.app/). 	
+In the oppening session Alison Presmanes Hill talked about what is "Learning without a net". Maëlle Salmon showed us how to [blog from R Markdown](https://bloguearrr.netlify.app/). 	
 
 Events about reproducibility ([ReproHack](https://latin-r.com/cronograma/#session-14)) and an [accessibility and inclusion panel](https://latin-r.com/cronograma/#session-16) were also developed.	
 
