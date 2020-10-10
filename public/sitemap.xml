@@ -4,32 +4,7 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/latinr/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2020/10/10/latinr-in-quarantine/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -58,7 +33,22 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/r/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2020-05-22T00:00:00+00:00</lastmod>
   </url>
   
