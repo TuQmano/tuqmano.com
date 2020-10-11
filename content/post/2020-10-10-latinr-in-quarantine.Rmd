@@ -24,7 +24,15 @@ tags: [LatinR]
 
 En términos personalísimos, volví a disfrutar mucho de la conferencia. No solo por haber podido mostrar parte del trabajo que desarrollamos con excelentes compañeres; también por darme cuenta de que mucho de lo que nosotros pudimos avanzar se debe en buena medida al esfuerzo y trabajo de otres, de quienes aprendemos y nos inspiramos. Y saber que tenemos la posibilidad de contacto e intercambio fluído con elles, es una de las grandes cosas de esta comunidad (les `LatinR`'s, `RenBaires`, `eph`'s, *et al.*)	
 
+```{r, echo=FALSE}
+library(vembedr)
 
+embed_url("https://youtu.be/UYvSv8StDa8?t=9801") %>% 
+  use_align(align = "center")%>%
+  use_rounded(10)
+
+
+```
 
 
 # #LatinR2020	
@@ -64,6 +72,17 @@ Events about reproducibility ([ReproHack](https://latin-r.com/cronograma/#sessio
 In very personal terms, I once again enjoyed the conference very much. Not only for being able to show part of the work that we develop with excellent colleagues; I also realized that much of what we were able to advance is largely due to the effort and work of others, from whom we learn and are inspired. And knowing that we have the possibility of having fluid contact and exchange with them is one of those great things that this community has (`LatinR`'s, `RenBaires`, `eph`'s, *et al.*).	
 
 
+```{r, echo=FALSE}
+library(vembedr)
+
+embed_url("https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3") %>% 
+  use_align(align = "center")%>%
+  use_rounded(10)
+
+
+```
+
+
 
 --- 	
 
@@ -71,7 +90,7 @@ In very personal terms, I once again enjoyed the conference very much. Not only 
 
 ### `{polAr}` - Análisis de Datos Políicos de Argentina	
 
-[Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf) | 📊 [Slides](https://www.tuqmano.com/slides/polar_slides.html#1) | [📦 `{polAr}`](https://electorarg.github.io/polAr/) | ⌨️ [blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | 📼 [ Video](https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3) | 📺 [ Panel](https://youtu.be/UYvSv8StDa8?t=9801) 	
+[Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf) | 📊 [Slides](https://www.tuqmano.com/slides/polar_slides.html#1) | [📦 `{polAr}`](https://electorarg.github.io/polAr/) | ⌨️ [blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | 📼 [ Video](https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3) | 📺 [Panel](https://youtu.be/UYvSv8StDa8?t=9801) 	
 
 
 ###  MinaR los discuRsos pResidenciales (with Camila Higa y Lucas Enrich)	
