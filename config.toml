@@ -9,10 +9,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 [[menu.main]]
-    name = "El TuQmano"
+    name = "TuQmano"
     url = "/about"
 [[menu.main]]
-    name = "TuQland"
+    name = "Miscellaneous"
     url = "https://tuqmano.tumblr.com/"
 [[menu.main]]
     name = "GitHub"
@@ -24,10 +24,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "Research"
     url = "https://www.researchgate.net/profile/Juan_Ruiz_Nicolini"
 [[menu.main]]
-    name = "polAr"
+    name = "{polAr}"
     url = "https://electorarg.github.io/polAr/" 
 [[menu.main]]
-    name = "MetodosCiPol"
+    name = "Teaching"
     url = "https://tuqmano.github.io/MetodosCiPol"     
 [[menu.main]]
     name = "CV"    
