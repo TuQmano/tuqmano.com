@@ -96,7 +96,7 @@ knitr::include_graphics("https://www.uade.edu.ar/media/kh1hx5wh/logo_mesa-de-tra
 
 --
 
-#### **`r icon::fa("hand-point-right")` Hipótesis**: mayor competitividad electoral del distrito, mayor es la participación electoral 
+#### **[`r icon::fa("hand-point-right")`](https://www.researchgate.net/publication/319332286) [Hipótesis](https://www.researchgate.net/publication/319332286)**: mayor competitividad electoral del distrito, mayor es la participación electoral 
 ---
 
 class: inverse
