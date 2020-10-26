@@ -1,5 +1,5 @@
 ---
-title: "{polAr}"
+title: "Colegio Electoral vs Voto Popular"
 subtitle: "LatinR 2020"
 author: "Juan Pablo Ruiz Nicolini"
 institute: "Universidad Torcuato Di Tella"
@@ -290,6 +290,38 @@ knitr::include_graphics("https://github.com/TuQmano/popular_vote/raw/master/plot
 --
 
 -Elecciones concurrentes.
+
+---
+class: inverse
+
+# EN RESUMEN
+
+•	La interpretación sustantiva del _“**voto popular**”_ es una manera errónea de leer los resultados.
+
+--
+
+•	Sin el cálculo de **competitividad electoral** por estado, habría otros incentivos en juego, otras estrategias de campaña y otros niveles de participación.
+
+--
+
+>Que el árbol (**_Colegio Electoral_**) no tape el bosque (un sistema con muchas deficiencias): 
+
+--
+
+*gerrymandering*, 
+
+--
+
+supresión del voto, 
+
+--
+
+voto optativo,
+
+--
+
+financiamiento de campaña (...)
+
 
 ---
 
