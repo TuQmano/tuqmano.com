@@ -68,6 +68,32 @@ knitr::include_graphics("https://www.uade.edu.ar/media/kh1hx5wh/logo_mesa-de-tra
 
 #### LICENCIATURA EN GOBIERNO Y RELACIONES INTERNACIONALES
 
+---
+class: middle, center, inverse
+
+### La mayoría de los norteamericanos votó por Hillary Clinton
+
+> _ La mayoría de los norteamericanos la quiso a ella, no a él.  Pero tenemos un sistema arcaico e inadecuado, llamado Colegio Electoral, que lo hizo presidente_
+
+**[Michael Moore](https://www.facebook.com/mmflint/posts/10153913074756857)**
+
+
+---
+```{r, echo  = FALSE}
+knitr::include_graphics("img/nyt.PNG")
+```
+
+
+---
+class: middle, center, inverse
+
+
+### El Colegio Electoral en la mira
+
+> El  Colegio  Electoral,  el órgano  que  elige  al  presidente,  le  costó  cuatro  presidencias  a  los demócratas:   dos  en  este  siglo,  y  en  1876  y  1888.   Al  Gore  ganó  el  voto  popular  en  las elecciones  de  2000,  pero  el  triunfo  fue  de  George  W.  Bush.   Hillary  Clinton  cosechó  más votos que Trump, pero tampoco pisará la Casa Blanca  
+
+**[Rafael Mathus Ruiz](https://www.lanacion.com.ar/el-mundo/el-colegio-electoral-en-la-mira-nid1955239/) (_La Nación_)**
+
 
 ---
 
@@ -270,6 +296,18 @@ class: inverse
 knitr::include_graphics("https://github.com/TuQmano/popular_vote/raw/master/plots/turnount_2016_facet.png")
 ```
 
+---
+
+### Participación 2020: voto anticipado y por correo
+
+#### vs 2016 ([U.S. Elections Project](https://electproject.github.io/Early-Vote-2020G/))
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/PCT_ElecProj.PNG")
+
+
+```
+
 
 ---
 
@@ -296,11 +334,11 @@ class: inverse
 
 # EN RESUMEN
 
-•	La interpretación sustantiva del _“**voto popular**”_ es una manera errónea de leer los resultados.
+•	Una interpretación _sustantiva_ del _“**voto popular**”_ no es la mejor manera de leer los resultados.
 
 --
 
-•	Sin el cálculo de **competitividad electoral** por estado, habría otros incentivos en juego, otras estrategias de campaña y otros niveles de participación.
+•	El cálculo de **competitividad electoral** por estado, nos da una idea de incentivos en juego  para los electores y estrategias de las campañas de candidatos que pueden afectar los niveles de participación.
 
 --
 
