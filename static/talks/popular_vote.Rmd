@@ -26,7 +26,7 @@ knitr::opts_chunk$set(collapse = TRUE,
                       message = FALSE)
 
 
-xaringanExtra::use_xaringan_extra(include = c("panelset", "tile_view", "webcam", "editable"))
+xaringanExtra::use_xaringan_extra(include = c("panelset", "tile_view", "webcam", "editable", "share_again"))
 
 library(polAr)
 library(tidyverse)
