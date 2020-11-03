@@ -285,8 +285,6 @@ Tablas$tabla[[2]]# %>% gtsave(filename = "2012.rtf")
 
 Tablas$tabla[[3]]# %>% gtsave(filename = "2016.rtf")
 ```
-
-
 ---
 class: inverse 
 
@@ -297,6 +295,19 @@ knitr::include_graphics("https://github.com/TuQmano/popular_vote/raw/master/plot
 ```
 
 ---
+
+### Competitividad 2020: carreras más cerradas
+
+####[FiveThirtyEight](https://projects.fivethirtyeight.com/2020-election-forecast) Election Forecast
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/538.PNG")
+```
+
+
+---
+
+
 
 ### Participación 2020: voto anticipado y por correo
 
