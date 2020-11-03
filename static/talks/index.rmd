@@ -10,6 +10,14 @@ output:
 
 ### 2020
 
+
+### 2020
+
+ > **UADE**: *Elecciones 2020 - Colegio Electoral vs Voto Popular*  (con Javier Cachés)
+
+[`r emojifont::emoji("computer")` Data & Código](https://github.com/TuQmano/popular_vote/) | [`r emojifont::emoji("bar_chart")` Slides](https://www.tuqmano.com/talks/popular_vote#1) | [`r emojifont::emoji("keyboard")` Nota](https://github.com/TuQmano/popular_vote/)
+
+
  > **LatinR**: `{polAr}` - *Análisis de Datos Políicos de Argentina* 
 
 [Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf) | [`r emojifont::emoji("bar_chart")` Slides](https://www.tuqmano.com/slides/polar_slides.html#1) | [`r emojifont::emoji("package")` {polAr}](https://electorarg.github.io/polAr/) | [`r emojifont::emoji("keyboard")` blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | [`r emojifont::emoji("vhs")` Video](https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3).
