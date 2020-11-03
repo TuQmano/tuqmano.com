@@ -11,8 +11,6 @@ output:
 ### 2020
 
 
-### 2020
-
  > **UADE**: *Elecciones 2020 - Colegio Electoral vs Voto Popular*  (con Javier Cachés)
 
 [`r emojifont::emoji("computer")` Data & Código](https://github.com/TuQmano/popular_vote/) | [`r emojifont::emoji("bar_chart")` Slides](https://www.tuqmano.com/talks/popular_vote#1) | [`r emojifont::emoji("keyboard")` Nota](https://github.com/TuQmano/popular_vote/)
