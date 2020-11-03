@@ -293,6 +293,15 @@ class: inverse
 ```{r, echo=FALSE}
 knitr::include_graphics("https://github.com/TuQmano/popular_vote/raw/master/plots/turnount_2016_facet.png")
 ```
+---
+
+class: inverse 
+
+### Participación y pronóstico electoral (II)
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/clinton-trump.PNG")
+```
 
 ---
 
