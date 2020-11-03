@@ -358,7 +358,7 @@ class: inverse
 
 --
 
-•	El cálculo de **competitividad electoral** por estado, nos da una idea de incentivos en juego  para los electores y estrategias de las campañas de candidatos que pueden afectar los niveles de participación.
+•	El cálculo de **competitividad electoral** por estado nos da una idea de incentivos en juego  para los electores y estrategias de las campañas de candidatos que pueden afectar los niveles de participación.
 
 --
 
