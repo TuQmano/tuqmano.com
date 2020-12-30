@@ -19,7 +19,7 @@ Con mis compañeros de _mentaComunicación_ empezamos a explorar cuantitativamen
 knitr::include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/comparisonwc2.png")
 ```
 
-Este primer ejercicio fue el punto de partida de un trabajo que se sumo a `{polAr}` y que contó con una[presentación en #LatinR2020](https://github.com/TuQmano/latinr2020/blob/master/rmd/discursos/discursos_presidenciales.pdf)
+Este primer ejercicio fue el punto de partida de un trabajo que se sumo a `{polAr}` y que contó con una [presentación en #LatinR2020](https://github.com/TuQmano/latinr2020/blob/master/rmd/discursos/discursos_presidenciales.pdf)
 
 --- 
 
