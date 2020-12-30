@@ -1,0 +1,79 @@
+---
+title: Un 2020 con mucho amoR
+author: TuQmano
+date: '2020-12-30'
+slug: un-2020-con-mucho-amor
+categories: []
+tags: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+<link href="/rmarkdown-libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+
+
+<p>Vamos terminando un nuevo año. Uno muy extraño y lleno de dificultades para todo el mundo. En esta breve entrada quiero cerrar mi balance en relación a una de las actividades/tareas/hobbies que más tiempo dedico día a día: estudiar, explorar, enseñar y escribir código con <code>R</code>. Voy entonces a destacar algunas de estas cosas.</p>
+<hr />
+<div id="discursos" class="section level3">
+<h3>DiscuRsos</h3>
+<p>Con mis compañeros de <em>mentaComunicación</em> empezamos a explorar cuantitativamente los discursos de apertura de sesiones de los presidentes argentinos. En <a href="https://www.tuqmano.com/2020/03/11/los-discursos-de-les-presidentes/">este post</a> analizamos los discursos de todos los presidentes desde el retorno de la democracia.</p>
+<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/comparisonwc2.png" width="90%" /></p>
+<p>Este primer ejercicio fue el punto de partida de un trabajo que se sumo a <code>{polAr}</code> y que contó con una<a href="https://github.com/TuQmano/latinr2020/blob/master/rmd/discursos/discursos_presidenciales.pdf">presentación en #LatinR2020</a></p>
+<hr />
+</div>
+<div id="shiny-contest" class="section level3">
+<h3>Shiny Contest</h3>
+<p>Participamos también del <a href="https://community.rstudio.com/t/socioeconomic-index-geoshiny-argentina-2020-shiny-contest-submission/56350"><em>2020 Shiny Contest</em></a> con una app que permite explorar las características socioeconomícas de Argentina a nivel de los radios censales de Argentina.</p>
+<p><img src="https://community.rstudio.com/uploads/default/original/3X/6/e/6ee529c6ed5fd872e3847ac56c46f18f03180fec.png" width="90%" /></p>
+<hr />
+</div>
+<div id="geofacetear" class="section level3">
+<h3>📦 {geofaceteAR}</h3>
+<p>Este año avanzamos finalmente en el desarrollo de paquetes. El primer paso fue la organización del proyecto de <em>grillas como mapas</em> presentado en la primera edición de <a href="https://github.com/TuQmano/geofacet_ARG">LatinR en 2018</a> en un paquete propio. Así nació <code>{geofacetAR}</code>, luego incorporado también en <code>{polAr}</code>.</p>
+<p><img src="https://github.com/electorArg/geofaceteAR/blob/master/hex/ggplot2.png?raw=true" width="30%" /></p>
+<p><a href="https://electorarg.github.io/geofaceteAR/" class="uri">https://electorarg.github.io/geofaceteAR/</a></p>
+<hr />
+</div>
+<div id="polar" class="section level3">
+<h3>📦 {polAr}</h3>
+<p>El desarrollo de <code>{polAr}</code> fue un pequeño paso para el análisis político de Argentina y un gran paso para la TuQmananidad, dado que pudimos cumplir con el objetivo de <a href="https://www.tuqmano.com/2020/05/22/empaquetar/">ser aceptados en <strong>CRAN</strong></a>.</p>
+<p>El paquete nació como evolución de trabajos previos como <a href="http://inteligenciaelectoral.mentacomunicacion.com.ar/"><em>Inteligencia Electoral</em></a>, una <em>Shiny App</em> que desarrollamos con mi amigo Juan Pablo Pilorget que pudimos presentar en la segunda edición de LatinR (Santiago de Chile, 2019).</p>
+<p><img src="https://github.com/electorArg/polAr/blob/master/hex/hex-polAr.png?raw=true" width="30%" /></p>
+<p>La primera versión en desarrollo del paquete contenía básicamente funciones para poder facilitar el acceso a datos electorales. Sobre ello se agregaron luego funciones para calcular indicadores y visualizar resultados.</p>
+<p>Se sumaron además otros flujos de trabajo: (i) funciones para trabajar con <em>geo</em> (con la incoporación de funciones de <code>{geopfaceteAR}</code> y de poligonos de distritos); (ii) los mencionados discursos presidenciales; y (iii) un primer avance con datos de votaciones legislativas.</p>
+<p><a href="https://electorarg.github.io/polAr/" class="uri">https://electorarg.github.io/polAr/</a></p>
+<p>Aprovechando las funciones que permiten acceder a datos y visualizar resultados electorales, con Camila Higa (mentaComunicación) desarrollamos un <em>bot</em> de Twitter que permite consultar los resultados de las elecciones disponibles.</p>
+{{% tweet "1266515420019900421" %}}
+<hr />
+</div>
+<div id="metdoscipol" class="section level3">
+<h3>#MetdosCiPol</h3>
+<p>Por tercer año consecutivo dictamos la materia <em>Herramientas Cuantitativas para el Análisis Político</em> de la Maestría en Ciencia Política de la Universidad Torcuato Di Tella. Tenemos la fortuna de que es una materia del tercer trimestre (Sep - Nov), por lo que pudimos aprender del esfuerzo que muches hicieron para virtualizar sus propias materias e incorporar sus enseñanzas. Un proyecto central en este sentido es <a href="metadocencia.org">MetaDocencia</a>.</p>
+<p>Este contexto nos llevó a crear un sitio web (desarrollado integramente con <code>R</code>) propio para poder organizar la cursada y compartir el desarrollo:</p>
+<div class="section level5">
+<h5><a href="https://tuqmano.github.io/MetodosCiPol/"><i class="fas  fa-globe "></i>/MetodosCiPol/</a></h5>
+</div>
+<div class="section level5">
+<h5><a href="https://github.com/TuQmano/MetodosCiPol"><i class="fab  fa-github "></i>/MetodosCiPol/</a></h5>
+<hr />
+</div>
+</div>
+<div id="latinr2020" class="section level3">
+<h3>LatinR2020</h3>
+<p>Tercera edición de la Conferencia Latinoamericana sobre Uso de R en Investigación + Desarrollo, popularmente conocida como <a href="https://latin-r.com/"><code>LatinR</code></a> que se esperaba fuera en Montevideo en el mes de septiembre de 2020, pero Covid19.</p>
+<p>El contexto llevó a que les organizadores decidieran armar una (GRAN) conferencia virtual. Como puse en <a href="https://www.tuqmano.com/2020/10/10/latinr-in-quarantine/">una entrada al finalizar la conferencia</a>:</p>
+<blockquote>
+<p>LatinR para mí representa lo mejor de la comunidad de usuaRios: apertura, predisposición para ayudar y colaborar y diversidad son pilares sobre los que se apoya la conferencia. Ejemplo de ello resultó la reunión de muches para trabajar en conjunto propuestas para la rstudioconf::global(2021). Y creo también que LatinR demostró, por el gran trabajo de chairs, comité científico y organizador, que se puede hacer una conferencia potenciando la diversidad y la apertura a nuevos usuarios, que en general tienen mayores restricciones de todo tipo para ser parte.</p>
+</blockquote>
+<p>Tuvimos la suerte de poder participar en tres paneles distintos, mostrando mucho de lo hasta acá reseñado:</p>
+<p><strong><code>{polAr}</code>: <em>Análisis de Datos Políicos de Argentina</em></strong></p>
+<p><a href="https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf">Abstract</a> | <a href="https://www.tuqmano.com/slides/polar_slides.html#1">📊 Slides</a> | <a href="https://electorarg.github.io/polAr/">📦 {polAr}</a> | <a href="https://www.tuqmano.com/2020/05/22/empaquetar/">⌨️ blogpost</a> | <a href="https://www.youtube.com/watch?v=V4xqUh6KCZs&amp;list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&amp;index=3">📼 Video</a>.</p>
+<p><strong><em>MinaR los discuRsos pResidenciales</em></strong> (con Camila Higa y Lucas Enrich)</p>
+<p><a href="https://github.com/TuQmano/latinr2020/blob/master/rmd/discursos/discursos_presidenciales.pdf">Abstract</a> | <a href="https://github.com/TuQmano/latinr2020/blob/master/slides/discursos/minar_los_discursos.pdf">📊 Slides</a> | <a href="https://www.tuqmano.com/2020/03/11/los-discursos-de-les-presidentes/">⌨️ blogpost</a> | <a href="https://www.youtube.com/watch?v=IZfNr_N7ylw&amp;list=PL9-E3cL2KgKlNKVfiwHoGR3pHpg7x8Uzt&amp;index=2">📼 Video</a>.</p>
+<p><strong><em>#TuitómetroNacional: monitor de la conversación política en Argentina</em></strong> (con Camila Higa).</p>
+<p><a href="https://github.com/TuQmano/latinr2020/blob/master/rmd/tuitometro/tuitometro.pdf">Abstract</a> | <a href="https://github.com/TuQmano/latinr2020/blob/master/slides/tuitometro/tuitometro.pdf">📊 Slides</a> | <a href="https://www.tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/">⌨️ blogpost</a> | <a href="https://www.youtube.com/watch?v=fNMwoLJ1iXQ&amp;list=PL9-E3cL2KgKnixQ0u36DgCsGvOkOIo5D1">📼 Video</a> | <a href="http://tuitometro.mentacomunicacion.com.ar/">💻 App</a>.</p>
+<hr />
+<p>Esperamos que el año que está por comenzar nos deje seguir avanzando y aprendiendo al menos una parte de todo lo que pudimos hacer en este dificil 2020. Ahí nos vemos.</p>
+<p>Salú !</p>
+</div>

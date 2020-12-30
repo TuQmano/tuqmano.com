@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Colegio Electoral vs Voto Popular</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Juan Pablo Ruiz Nicolini" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+    <script src="libs/anchor-sections/anchor-sections.js"></script>
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ed7adb102d6d4de5af634646d1210141","expires":14}</script>
+    <script src="libs/himalaya/himalaya.js"></script>
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <link href="libs/editable/editable.css" rel="stylesheet" />
+    <script src="libs/editable/editable.js"></script>
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+layout:true
+
+
+
+
+---
+
+class: center, middle
+
+
+### Colegio Electoral vs Voto Popular
+#### **¿Cómo interpretar los resultados electorales de EE.UU.?**
+
+.pull-left[
+
+#### JP RUIZ NICOLINI
+
+##### UTDT
+##### [<i class="fab  fa-twitter "></i>](https://twitter.com/TuQmano)  [TuQmano](https://twitter.com/TuQmano) 
+
+
+]
+
+.pull-right[
+
+#### JAVIER CACHÉS
+##### UTDT / UBA
+##### [<i class="fab  fa-twitter "></i>](https://twitter.com/javicaches)  [javicaches](https://twitter.com/javicaches) 
+
+
+]
+
+#### 3 de noviembre de 2020
+
+&lt;img src="https://www.uade.edu.ar/media/kh1hx5wh/logo_mesa-de-trabajo-1-copia.png" width="25%" /&gt;
+
+#### LICENCIATURA EN GOBIERNO Y RELACIONES INTERNACIONALES
+
+---
+class: middle, center, inverse
+
+### La mayoría de los norteamericanos votó por Hillary Clinton
+
+&gt; _ La mayoría de los norteamericanos la quiso a ella, no a él.  Pero tenemos un sistema arcaico e inadecuado, llamado Colegio Electoral, que lo hizo presidente_
+
+**[Michael Moore](https://www.facebook.com/mmflint/posts/10153913074756857)**
+
+
+---
+&lt;img src="img/nyt.PNG" width="718" /&gt;
+
+
+---
+class: middle, center, inverse
+
+
+### El Colegio Electoral en la mira
+
+&gt; El  Colegio  Electoral,  el órgano  que  elige  al  presidente,  le  costó  cuatro  presidencias  a  los demócratas:   dos  en  este  siglo,  y  en  1876  y  1888.   Al  Gore  ganó  el  voto  popular  en  las elecciones  de  2000,  pero  el  triunfo  fue  de  George  W.  Bush.   Hillary  Clinton  cosechó  más votos que Trump, pero tampoco pisará la Casa Blanca  
+
+**[Rafael Mathus Ruiz](https://www.lanacion.com.ar/el-mundo/el-colegio-electoral-en-la-mira-nid1955239/) (_La Nación_)**
+
+
+---
+
+
+## Reglas electorales, incentivos y comportamiento de los votantes.
+
+&gt;	*No hay que tomar al voto popular como una medida de quién hubiera ganado si no existiese el Colegio Electoral* 
+
+&gt; **-Noam Lupu (2016)**
+
+--
+
+### Instituciones Electorales
+
+--
+
+- Elección indirecta (Colegio Electoral)
+
+--
+
+- *Winner takes all*
+
+--
+
+- Voto optativo
+
+--
+
+#### **[<i class="fas  fa-hand-point-right "></i>](https://www.researchgate.net/publication/319332286) [Hipótesis](https://www.researchgate.net/publication/319332286)**: mayor competitividad electoral del distrito, mayor es la participación electoral 
+---
+
+class: inverse
+
+### ¿Qué nos dicen los datos?
+
+&lt;img src="https://github.com/TuQmano/popular_vote/raw/master/plots/turnount_ts.png" width="100%" /&gt;
+
+---
+
+
+
+
+
+### Competitividad y participación electoral 
+
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mcgatbxmtz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mcgatbxmtz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mcgatbxmtz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mcgatbxmtz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mcgatbxmtz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mcgatbxmtz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mcgatbxmtz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mcgatbxmtz .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mcgatbxmtz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mcgatbxmtz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mcgatbxmtz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mcgatbxmtz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mcgatbxmtz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#mcgatbxmtz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcgatbxmtz .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcgatbxmtz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mcgatbxmtz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mcgatbxmtz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mcgatbxmtz .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mcgatbxmtz .gt_left {
+  text-align: left;
+}
+
+#mcgatbxmtz .gt_center {
+  text-align: center;
+}
+
+#mcgatbxmtz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mcgatbxmtz .gt_font_normal {
+  font-weight: normal;
+}
+
+#mcgatbxmtz .gt_font_bold {
+  font-weight: bold;
+}
+
+#mcgatbxmtz .gt_font_italic {
+  font-style: italic;
+}
+
+#mcgatbxmtz .gt_super {
+  font-size: 65%;
+}
+
+#mcgatbxmtz .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="mcgatbxmtz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>Elección Presidencial 2000</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Estado</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">|Dem - Rep|</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Participación<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">Minnesota</td>
+      <td class="gt_row gt_center">2.4</td>
+      <td class="gt_row gt_center" style="background-color: #4500F5; color: #FFFFFF;">13.9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Wisconsin</td>
+      <td class="gt_row gt_center">0.2</td>
+      <td class="gt_row gt_center" style="background-color: #7100E2; color: #FFFFFF;">11.9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Oregon</td>
+      <td class="gt_row gt_center">0.4</td>
+      <td class="gt_row gt_center" style="background-color: #9200CA; color: #FFFFFF;">9.3</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">New Hampshire</td>
+      <td class="gt_row gt_center">1.2</td>
+      <td class="gt_row gt_center" style="background-color: #9D00C0; color: #FFFFFF;">8.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Iowa</td>
+      <td class="gt_row gt_center">0.3</td>
+      <td class="gt_row gt_center" style="background-color: #A300BA; color: #FFFFFF;">7.6</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Missouri</td>
+      <td class="gt_row gt_center">3.3</td>
+      <td class="gt_row gt_center" style="background-color: #C6008E; color: #FFFFFF;">2.6</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Ohio</td>
+      <td class="gt_row gt_center">3.5</td>
+      <td class="gt_row gt_center" style="background-color: #CE0081; color: #FFFFFF;">1.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Florida</td>
+      <td class="gt_row gt_center">0.0</td>
+      <td class="gt_row gt_center" style="background-color: #D30079; color: #FFFFFF;">0.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">New Mexico</td>
+      <td class="gt_row gt_center">1.0</td>
+      <td class="gt_row gt_center" style="background-color: #F20037; color: #FFFFFF;">-7.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Nevada</td>
+      <td class="gt_row gt_center">3.5</td>
+      <td class="gt_row gt_center" style="background-color: #FD000E; color: #FFFFFF;">-10.4</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Distancia del promedio de participación inter estadual (puntos porcentuales)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+
+
+
+---
+
+### Competitividad y participación electoral 
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zrhtzmnawc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zrhtzmnawc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zrhtzmnawc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zrhtzmnawc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zrhtzmnawc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zrhtzmnawc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zrhtzmnawc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zrhtzmnawc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zrhtzmnawc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zrhtzmnawc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zrhtzmnawc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zrhtzmnawc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zrhtzmnawc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#zrhtzmnawc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrhtzmnawc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrhtzmnawc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zrhtzmnawc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zrhtzmnawc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zrhtzmnawc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zrhtzmnawc .gt_left {
+  text-align: left;
+}
+
+#zrhtzmnawc .gt_center {
+  text-align: center;
+}
+
+#zrhtzmnawc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zrhtzmnawc .gt_font_normal {
+  font-weight: normal;
+}
+
+#zrhtzmnawc .gt_font_bold {
+  font-weight: bold;
+}
+
+#zrhtzmnawc .gt_font_italic {
+  font-style: italic;
+}
+
+#zrhtzmnawc .gt_super {
+  font-size: 65%;
+}
+
+#zrhtzmnawc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="zrhtzmnawc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>Elección Presidencial 2012</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Estado</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">|Dem - Rep|</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Participación<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">Wisconsin</td>
+      <td class="gt_row gt_center">6.7</td>
+      <td class="gt_row gt_center" style="background-color: #5C00EC; color: #FFFFFF;">13.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Iowa</td>
+      <td class="gt_row gt_center">5.6</td>
+      <td class="gt_row gt_center" style="background-color: #8600D4; color: #FFFFFF;">10.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">New Hampshire</td>
+      <td class="gt_row gt_center">5.8</td>
+      <td class="gt_row gt_center" style="background-color: #8700D3; color: #FFFFFF;">10.3</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Colorado</td>
+      <td class="gt_row gt_center">4.7</td>
+      <td class="gt_row gt_center" style="background-color: #8A00D0; color: #FFFFFF;">10.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Virginia</td>
+      <td class="gt_row gt_center">3.0</td>
+      <td class="gt_row gt_center" style="background-color: #AE00AE; color: #FFFFFF;">6.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">North Carolina</td>
+      <td class="gt_row gt_center">2.2</td>
+      <td class="gt_row gt_center" style="background-color: #B800A2; color: #FFFFFF;">4.9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Ohio</td>
+      <td class="gt_row gt_center">1.9</td>
+      <td class="gt_row gt_center" style="background-color: #BA009F; color: #FFFFFF;">4.6</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Florida</td>
+      <td class="gt_row gt_center">0.6</td>
+      <td class="gt_row gt_center" style="background-color: #C40090; color: #FFFFFF;">2.9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Pennsylvania</td>
+      <td class="gt_row gt_center">5.2</td>
+      <td class="gt_row gt_center" style="background-color: #D60074; color: #FFFFFF;">-0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Nevada</td>
+      <td class="gt_row gt_center">6.6</td>
+      <td class="gt_row gt_center" style="background-color: #E40058; color: #FFFFFF;">-3.5</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Distancia del promedio de participación inter estadual (puntos porcentuales)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+
+
+---
+
+### Competitividad y participación electoral
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cuymbjwrwn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cuymbjwrwn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cuymbjwrwn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cuymbjwrwn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cuymbjwrwn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cuymbjwrwn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cuymbjwrwn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cuymbjwrwn .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cuymbjwrwn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cuymbjwrwn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cuymbjwrwn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cuymbjwrwn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cuymbjwrwn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#cuymbjwrwn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cuymbjwrwn .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cuymbjwrwn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cuymbjwrwn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cuymbjwrwn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cuymbjwrwn .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cuymbjwrwn .gt_left {
+  text-align: left;
+}
+
+#cuymbjwrwn .gt_center {
+  text-align: center;
+}
+
+#cuymbjwrwn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cuymbjwrwn .gt_font_normal {
+  font-weight: normal;
+}
+
+#cuymbjwrwn .gt_font_bold {
+  font-weight: bold;
+}
+
+#cuymbjwrwn .gt_font_italic {
+  font-style: italic;
+}
+
+#cuymbjwrwn .gt_super {
+  font-size: 65%;
+}
+
+#cuymbjwrwn .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="cuymbjwrwn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>Elección Presidencial 2016</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Estado</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">|Dem - Rep|</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Participación<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">Minnesota</td>
+      <td class="gt_row gt_center">1.5</td>
+      <td class="gt_row gt_center" style="background-color: #5300F0; color: #FFFFFF;">13.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">New Hampshire</td>
+      <td class="gt_row gt_center">0.4</td>
+      <td class="gt_row gt_center" style="background-color: #8300D6; color: #FFFFFF;">10.6</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Maine</td>
+      <td class="gt_row gt_center">2.7</td>
+      <td class="gt_row gt_center" style="background-color: #8E00CE; color: #FFFFFF;">9.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Wisconsin</td>
+      <td class="gt_row gt_center">1.0</td>
+      <td class="gt_row gt_center" style="background-color: #9900C3; color: #FFFFFF;">8.6</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">North Carolina</td>
+      <td class="gt_row gt_center">3.8</td>
+      <td class="gt_row gt_center" style="background-color: #BE009A; color: #FFFFFF;">4.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Michigan</td>
+      <td class="gt_row gt_center">0.3</td>
+      <td class="gt_row gt_center" style="background-color: #BE0099; color: #FFFFFF;">3.9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Florida</td>
+      <td class="gt_row gt_center">1.2</td>
+      <td class="gt_row gt_center" style="background-color: #BF0098; color: #FFFFFF;">3.8</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Pennsylvania</td>
+      <td class="gt_row gt_center">1.2</td>
+      <td class="gt_row gt_center" style="background-color: #C8008A; color: #FFFFFF;">2.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Nevada</td>
+      <td class="gt_row gt_center">2.4</td>
+      <td class="gt_row gt_center" style="background-color: #E40058; color: #FFFFFF;">-3.5</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Arizona</td>
+      <td class="gt_row gt_center">3.9</td>
+      <td class="gt_row gt_center" style="background-color: #EB0047; color: #FFFFFF;">-5.4</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Distancia del promedio de participación inter estadual (puntos porcentuales)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+---
+class: inverse 
+
+### Participación y pronóstico electoral
+
+![](https://github.com/TuQmano/popular_vote/raw/master/plots/turnount_2016_facet.png)&lt;!-- --&gt;
+---
+
+class: inverse 
+
+### Participación y pronóstico electoral (II)
+
+&lt;img src="img/clinton-trump.PNG" width="80%" /&gt;
+
+---
+
+### Competitividad 2020: carreras más cerradas
+
+####[FiveThirtyEight](https://projects.fivethirtyeight.com/2020-election-forecast) Election Forecast
+
+&lt;img src="img/538.PNG" width="80%" /&gt;
+
+
+---
+
+
+
+### Participación 2020: voto anticipado y por correo
+
+#### vs 2016 ([U.S. Elections Project](https://electproject.github.io/Early-Vote-2020G/))
+
+&lt;img src="img/PCT_ElecProj.PNG" width="1067" /&gt;
+
+
+---
+
+### (Otros) Determinantes de la participación electoral
+
+#### Variables no observadas:
+
+-Cultura política.
+
+--
+
+-Legislación electoral.
+
+--
+
+-Demografía.
+
+--
+
+-Elecciones concurrentes.
+
+---
+class: inverse
+
+# EN RESUMEN
+
+•	Una interpretación _sustantiva_ del _“**voto popular**”_ no es la mejor manera de leer los resultados.
+
+--
+
+•	El cálculo de **competitividad electoral** por estado nos da una idea de incentivos en juego  para los electores y estrategias de las campañas de candidatos que pueden afectar los niveles de participación.
+
+--
+
+&gt;Que el árbol (**_Colegio Electoral_**) no tape el bosque (un sistema con muchas deficiencias): 
+
+--
+
+*gerrymandering*, 
+
+--
+
+supresión del voto, 
+
+--
+
+voto optativo,
+
+--
+
+financiamiento de campaña (...)
+
+
+---
+
+class: inverse, middle
+
+# GRACIAS! 
+
+* Slides:  &lt;https://tuqmano.com/talks/popular_vote&gt;
+
+* Datos y código disponibles en &lt;https://github.com/TuQmano/popular_vote/&gt;
+
+
+.pull-left[
+
+#### JP RUIZ NICOLINI
+
+##### UTDT
+##### [<i class="fab  fa-twitter "></i>](https://twitter.com/TuQmano)  [TuQmano](https://twitter.com/TuQmano) 
+
+
+]
+
+.pull-right[
+
+#### JAVIER CACHÉS
+##### UTDT / UBA
+##### [<i class="fab  fa-twitter "></i>](https://twitter.com/javicaches)  [javicaches](https://twitter.com/javicaches) 
+
+
+]
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

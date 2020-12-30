@@ -6,10 +6,20 @@
     <description>Recent content in Posts on TuQmanoR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Un 2020 con mucho amoR</title>
+      <link>/2020/12/30/un-2020-con-mucho-amor/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/30/un-2020-con-mucho-amor/</guid>
+      <description>Vamos terminando un nuevo año. Uno muy extraño y lleno de dificultades para todo el mundo. En esta breve entrada quiero cerrar mi balance en relación a una de las actividades/tareas/hobbies que más tiempo dedico día a día: estudiar, explorar, enseñar y escribir código con R. Voy entonces a destacar algunas de estas cosas.
+DiscuRsosCon mis compañeros de mentaComunicación empezamos a explorar cuantitativamente los discursos de apertura de sesiones de los presidentes argentinos.</description>
+    </item>
     
     <item>
       <title>LatinR in quarantine</title>
