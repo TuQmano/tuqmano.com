@@ -157,5 +157,27 @@ Como politólogo mi trabajo se concentra en estudios electorales, partidos polí
 Escribí el paquete {polAr}: *POLítica ARgentina usando R*.</description>
     </item>
     
+    <item>
+      <title>Talks</title>
+      <link>/talks/</link>
+      <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
+      
+      <guid>/talks/</guid>
+      <description>2020 UADE: Elecciones 2020 - Colegio Electoral vs Voto Popular (con Javier Cachés) 💻 Data &amp;amp; Código |📊 Slides | ⌨️ Nota
+LatinR: {polAr} - Análisis de Datos Políicos de Argentina Abstract | 📊 Slides | 📦 {polAr} | ⌨️ blogpost | 📼 Video.
+LatinR: MinaR los discuRsos pResidenciales (con Camila Higa y Lucas Enrich) Abstract | 📊 Slides | ⌨️ blogpost | 📼 Video.
+LatinR: #TuitómetroNacional: monitor de la conversación política en Argentina (con Camila Higa).</description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>/teaching/</link>
+      <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
+      
+      <guid>/teaching/</guid>
+      <description>2020 Herramientas Cuantitativas para el Análisis Político [CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2020  
+-&amp;gt; https://tuqmano.github.io/MetodosCiPol/</description>
+    </item>
+    
   </channel>
 </rss>

@@ -19,7 +19,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "https://github.com/TuQmano"
 [[menu.main]]
     name = "Talks"
-    url = "https://tuqmano.com/talks"
+    url = "/talks"
 [[menu.main]]
     name = "Research"
     url = "https://www.researchgate.net/profile/Juan_Ruiz_Nicolini"
@@ -28,7 +28,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "https://electorarg.github.io/polAr/" 
 [[menu.main]]
     name = "Teaching"
-    url = "https://tuqmano.github.io/MetodosCiPol"     
+    url = "/teaching"     
 [[menu.main]]
     name = "CV"    
     url = "https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/data/CV_Ruiz_Nicolini.pdf"

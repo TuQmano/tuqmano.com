@@ -34,7 +34,14 @@ Ahora, creo que en el contexto de la pandemia esta _virtud_ encuentra un límite
 Para ilustrar la primera podemos recurrir al político tuitero más famoso del mundo: 
 
 
-```{r echo=FALSE, warning=F}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width="100%"}
+
+knitr::include_graphics("https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/12/18/15/trump.jpg")
+
+```
+
+
+```{r echo=FALSE, warning=F, eval=F}
 library(blogdown)
 blogdown::shortcode('tweet', '1178989254309011456')
 ```
