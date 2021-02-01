@@ -6,25 +6,25 @@ date: "2018-01-05T21:48:51-07:00"
 ## 2020
 
 
- ### **UADE**: *Elecciones 2020 - Colegio Electoral vs Voto Popular*  (con Javier Cachés)
+### **UADE**: *Elecciones 2020 - Colegio Electoral vs Voto Popular*  (con Javier Cachés)
 
 
 💻 [Data & Código](https://github.com/TuQmano/popular_vote/) |📊 [Slides](https://www.tuqmano.com/talks/popular_vote#1) | ⌨️ [Nota](https://github.com/TuQmano/popular_vote/)
 
 
- ### **LatinR**: `{polAr}` - *Análisis de Datos Políicos de Argentina* 
+### **LatinR**: `{polAr}` - *Análisis de Datos Políicos de Argentina* 
 
 [Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf) | 📊 [Slides](https://www.tuqmano.com/slides/polar_slides.html#1) |  📦 [{polAr}](https://electorarg.github.io/polAr/) | ⌨️ [blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | 📼 [Video](https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3).
 
 
 
- ### **LatinR**: *MinaR los discuRsos pResidenciales* (con Camila Higa y Lucas Enrich) 
+### **LatinR**: *MinaR los discuRsos pResidenciales* (con Camila Higa y Lucas Enrich) 
 
 [Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/discursos/discursos_presidenciales.pdf) | 📊 [Slides](https://github.com/TuQmano/latinr2020/blob/master/slides/discursos/minar_los_discursos.pdf) | ⌨️ [blogpost](https://www.tuqmano.com/2020/03/11/los-discursos-de-les-presidentes/) | 📼 [Video](https://www.youtube.com/watch?v=IZfNr_N7ylw&list=PL9-E3cL2KgKlNKVfiwHoGR3pHpg7x8Uzt&index=2).
 
 
 
- ### **LatinR**: _#TuitómetroNacional: monitor de la conversación política en Argentina_ (con Camila Higa). 
+### **LatinR**: _#TuitómetroNacional: monitor de la conversación política en Argentina_ (con Camila Higa). 
 
 
 [Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/tuitometro/tuitometro.pdf) | 📊 [Slides](https://github.com/TuQmano/latinr2020/blob/master/slides/tuitometro/tuitometro.pdf) | ⌨️ [blogpost](https://www.tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/) | 📼 [Video](https://www.youtube.com/watch?v=fNMwoLJ1iXQ&list=PL9-E3cL2KgKnixQ0u36DgCsGvOkOIo5D1) | 💻 [App](http://tuitometro.mentacomunicacion.com.ar/).
