@@ -25,7 +25,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "https://www.researchgate.net/profile/Juan_Ruiz_Nicolini"
 [[menu.main]]
     name = "{polAr}"
-    url = "https://electorarg.github.io/polAr/" 
+    url = "https://github.com/politicaargentina/" 
 [[menu.main]]
     name = "Teaching"
     url = "/teaching"     
