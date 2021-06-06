@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on TuQmanoR</title>
-    <link>/tags/</link>
+    <link>https://tuqmano.com/tags/</link>
     <description>Recent content in Tags on TuQmanoR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tuqmano.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LatinR</title>
-      <link>/tags/latinr/</link>
+      <link>https://tuqmano.com/tags/latinr/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/latinr/</guid>
+      <guid>https://tuqmano.com/tags/latinr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CRAN</title>
-      <link>/tags/cran/</link>
+      <link>https://tuqmano.com/tags/cran/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/cran/</guid>
+      <guid>https://tuqmano.com/tags/cran/</guid>
       <description></description>
     </item>
     
     <item>
       <title>geofacetAr</title>
-      <link>/tags/geofacetar/</link>
+      <link>https://tuqmano.com/tags/geofacetar/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/geofacetar/</guid>
+      <guid>https://tuqmano.com/tags/geofacetar/</guid>
       <description></description>
     </item>
     
     <item>
       <title>polAr</title>
-      <link>/tags/polar/</link>
+      <link>https://tuqmano.com/tags/polar/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/polar/</guid>
+      <guid>https://tuqmano.com/tags/polar/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>https://tuqmano.com/tags/r/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://tuqmano.com/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Markdown</title>
-      <link>/tags/r-markdown/</link>
+      <link>https://tuqmano.com/tags/r-markdown/</link>
       <pubDate>Mon, 21 Jan 2019 17:13:14 -0500</pubDate>
       
-      <guid>/tags/r-markdown/</guid>
+      <guid>https://tuqmano.com/tags/r-markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Markdown, ggplot, geo</title>
-      <link>/tags/r-markdown-ggplot-geo/</link>
+      <link>https://tuqmano.com/tags/r-markdown-ggplot-geo/</link>
       <pubDate>Mon, 21 Jan 2019 17:13:14 -0500</pubDate>
       
-      <guid>/tags/r-markdown-ggplot-geo/</guid>
+      <guid>https://tuqmano.com/tags/r-markdown-ggplot-geo/</guid>
       <description></description>
     </item>
     

@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TuQmanoR</title>
-    <link>/</link>
+    <link>https://tuqmano.com/</link>
     <description>Recent content on TuQmanoR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jan 2018 21:48:51 -0700</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tuqmano.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Un 2020 con mucho amoR</title>
-      <link>/2020/12/30/un-2020-con-mucho-amor/</link>
+      <link>https://tuqmano.com/2020/12/30/un-2020-con-mucho-amor/</link>
       <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/12/30/un-2020-con-mucho-amor/</guid>
+      <guid>https://tuqmano.com/2020/12/30/un-2020-con-mucho-amor/</guid>
       <description>Vamos terminando un nuevo año. Uno muy extraño y lleno de dificultades para todo el mundo. En esta breve entrada quiero cerrar mi balance en relación a una de las actividades/tareas/hobbies que más tiempo dedico día a día: estudiar, explorar, enseñar y escribir código con R. Voy entonces a destacar algunas de estas cosas.
 DiscuRsosCon mis compañeros de mentaComunicación empezamos a explorar cuantitativamente los discursos de apertura de sesiones de los presidentes argentinos.</description>
     </item>
     
     <item>
       <title>LatinR in quarantine</title>
-      <link>/2020/10/10/latinr-in-quarantine/</link>
+      <link>https://tuqmano.com/2020/10/10/latinr-in-quarantine/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/10/10/latinr-in-quarantine/</guid>
+      <guid>https://tuqmano.com/2020/10/10/latinr-in-quarantine/</guid>
       <description>2018 en Buenos Aires. 2019 en Santiago de Chile. 2020 en … la virtualidad. La crisis desatada por la pandemia del Covid19 cambió el plan de realizar el tercer encuentro de la Conferencia Latinoamericana sobre Uso de R en Investigación + Desarrollo en Montevideo (lugar donde se espera realizar el 4° encuentro).
 LatinR para mí representa lo mejor de la comunidad de usuaRios: apertura, predisposición para ayudar y colaborar y diversidad son pilares sobre los que se apoya la conferencia.</description>
     </item>
     
     <item>
       <title>polaR on CRAN</title>
-      <link>/2020/05/22/empaquetar/</link>
+      <link>https://tuqmano.com/2020/05/22/empaquetar/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/22/empaquetar/</guid>
+      <guid>https://tuqmano.com/2020/05/22/empaquetar/</guid>
       <description>Publicaron en CRAN una primera versión del paquete polAr: -POLítica ARgentina usando R. En este post intentaré detallar un poco más el proceso de trabajo con el que llegamos hasta acá y, como yapa, el de geofaceteAr.
 polArNew CRAN package polAr with initial version 0.1.3 https://t.co/0QdYpl5sce #rstats
 &amp;mdash; CRAN Package Updates (@CRANberriesFeed) May 16, 2020  La idea del paquete es brindar herramientas que faciliten el flujo de trabajo del análisis político - electoral y el acceso a datos de Argentina usando R.</description>
@@ -44,20 +44,20 @@ polArNew CRAN package polAr with initial version 0.1.3 https://t.co/0QdYpl5sce 
     
     <item>
       <title>Datos y Covid19</title>
-      <link>/2020/03/29/datos-y-covid19/</link>
+      <link>https://tuqmano.com/2020/03/29/datos-y-covid19/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/03/29/datos-y-covid19/</guid>
+      <guid>https://tuqmano.com/2020/03/29/datos-y-covid19/</guid>
       <description>Hace unos poco días Andrés Vázquez me invitó junto a un conjunto de personas (especialistas en datos abiertos, cientistas de datos, economistas, informáticos y desarrolladores de software) a responder \(3\) preguntas que tienen que ver con los desafíos de la apertura de datos en el contexto de la crísis de la pandemia del Covid19.
 Cadena de Datos / Episodio 34: En este contexto de crisis y preocupación por la pandemia donde todos queremos saber que paso ahora, que tan grave es y que va a pasar en las próximas semanas me surgen algunas dudas acerca de las políticas de apertura y uso de los datos relacionados a este tema.</description>
     </item>
     
     <item>
       <title>dibujaR legislatuRas</title>
-      <link>/2020/03/15/dibujar-legislaturas/</link>
+      <link>https://tuqmano.com/2020/03/15/dibujar-legislaturas/</link>
       <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/03/15/dibujar-legislaturas/</guid>
+      <guid>https://tuqmano.com/2020/03/15/dibujar-legislaturas/</guid>
       <description>Aprovechamos el distanciamiento social para comaprtir algunas de las cosas que venían quedando pendiente de actualizar.
 Ya se pueden leer en TuQmanoR dos de los ejercicios con datos y visualizaciones que hicimos con les compañeres de menta Comunicación:
 Uno primero consistió en analizar la información asociada a cada una de las cuentas de legisladores (Senadores y Diputades) argentinos que conformarán el Congreso Nacional en el periódo 2019-2021: cómo son utilizadas las cuentas, cómo interactúa el público con sus publicaciones y cómo podemos distinguir a las cuentas en distintos grupos o clusters de afinidad.</description>
@@ -65,20 +65,20 @@ Uno primero consistió en analizar la información asociada a cada una de las cu
     
     <item>
       <title>Los discursos de les presidentes</title>
-      <link>/2020/03/11/los-discursos-de-les-presidentes/</link>
+      <link>https://tuqmano.com/2020/03/11/los-discursos-de-les-presidentes/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/03/11/los-discursos-de-les-presidentes/</guid>
+      <guid>https://tuqmano.com/2020/03/11/los-discursos-de-les-presidentes/</guid>
       <description>(Juan Pablo Ruiz Nicolini, Iván Lewin y Camila Higa1)
 Todos los 1 de marzo, ambas Cámaras del Congreso se reúnen para dar comienzo al año legislativo y cada año el presidente de turno encabeza el acto de Apertura. Los discursos2 suelen girar en torno a los ejes de gobierno, las promesas y los objetivos del año, pero más allá del contenido, cada uno tiene un estilo personal marcado por el presidente.</description>
     </item>
     
     <item>
       <title>Congreso 2.0: politicos argentinos en Twitter</title>
-      <link>/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/</link>
+      <link>https://tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/</guid>
+      <guid>https://tuqmano.com/2019/12/20/congreso-2-0-politicos-argentinos-en-twitter/</guid>
       <description>(Juan Pablo Ruiz Nicolini, Camila Higa, Franco Galeano y Carolina Rossi1)
 La conformación de un nuevo cuerpo legislativo para los próximos dos años en Argentina nos motivó a hacer un análisis de la estructura, funcionamiento e interacciones de las cuentas de Twitter de los legisladores nacionales que conformarán el Congreso de la Nación durante el periodo 2019 - 2021.
 Tal como hiciéramos respecto a las cuentas de legisladores pertenecientes al Senado de la Nación (disponible acá), en los siguientes apartados nos proponemos hacer una radiografía de la Cámara de Diputados.</description>
@@ -86,39 +86,39 @@ Tal como hiciéramos respecto a las cuentas de legisladores pertenecientes al Se
     
     <item>
       <title>InteRacciones en twitteR</title>
-      <link>/2019/11/11/interacciones-en-twitter/</link>
+      <link>https://tuqmano.com/2019/11/11/interacciones-en-twitter/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/11/11/interacciones-en-twitter/</guid>
+      <guid>https://tuqmano.com/2019/11/11/interacciones-en-twitter/</guid>
       <description>Análisis realizado junto a Camila Higa 1
 Twitter es la plataforma preferida para el análisis de datos políticos en redes. Hay por lo menos dos razones que lo explican: (a) es allí donde la mayoría de los dirigentes políticos se expresan (y, por ende, donde el público que consume información política interactúa); y (b) es la red que disponibiliza libremente grandes volumenes de información.</description>
     </item>
     
     <item>
       <title>LatinR2019 ha muerto... que viva LatinR2020</title>
-      <link>/2019/09/30/latinr2019-ha-muerto-que-viva-latinr2020/</link>
+      <link>https://tuqmano.com/2019/09/30/latinr2019-ha-muerto-que-viva-latinr2020/</link>
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/09/30/latinr2019-ha-muerto-que-viva-latinr2020/</guid>
+      <guid>https://tuqmano.com/2019/09/30/latinr2019-ha-muerto-que-viva-latinr2020/</guid>
       <description>Terminó nomás la segunda edición de #LatinR. Tres días a pleno con workshops, exposiciones plenarias, presentaciones y posters. Diversidad de disciplinas, participantes de casi toda nuestramerica e invitados super grosos. Donde no solo aprendí cuestiones técnicas y nuevas herramientas, sino también el ejericio constante de reforzar el trabajo colaborativo dentro de una comunidad diversa y plural.
 Yo en particular tuve la gran oportunidad además de (a) participar de un genial taller sobre el desarrollo de paquetes, con el messi de este lío (H.</description>
     </item>
     
     <item>
       <title>LatinR 2019... allá vamos.</title>
-      <link>/2019/09/08/latinr-2019/</link>
+      <link>https://tuqmano.com/2019/09/08/latinr-2019/</link>
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/09/08/latinr-2019/</guid>
+      <guid>https://tuqmano.com/2019/09/08/latinr-2019/</guid>
       <description>Los próximos 25, 26 y 27 de septiembre se desarrollará en Santiago de Chile la segunda edición de LatinR: Conferencia Latinoamericana sobre el uso de R en I+D. Tuve la suerte de participar en la primera edición, que se llevó a cabo en Buenos Aires hace un año, donde pude mostrar un pequeño proyecto -aún en desarrollo- que consiste en el armado de grillas como si fueran mapas (geofacet) aplicados a divisiones políticas de Argentina (a nivel país y provincial) 1.</description>
     </item>
     
     <item>
       <title>diag`R`amas</title>
-      <link>/2019/04/18/diagramas/</link>
+      <link>https://tuqmano.com/2019/04/18/diagramas/</link>
       <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/04/18/diagramas/</guid>
+      <guid>https://tuqmano.com/2019/04/18/diagramas/</guid>
       <description>Ayer participé en el segundo #MiércolesDeDatos, que replica el desafío semanal #TidyTuesday de su hermano anglófono por iniciativa de @R4DS_es, quienes colaboran para hacer accesible la biblia de la comunidad datera de R para la comunidad hispanoparlante.
 El proyecto de ayer consitía en hacer un análisis de datos y visualización con información de los libros de Game of Thrones. Esto fue lo que compartí
 Aproveché los datos de este #MiércolesDeDatos para probar una de las features que incluye ggforce (el acelerador de ggplot creado por Thomas Lin Pedersen).</description>
@@ -126,10 +126,10 @@ Aproveché los datos de este #MiércolesDeDatos para probar una de las features 
     
     <item>
       <title>GeofaceteAR</title>
-      <link>/2019/01/21/geofacetear/</link>
+      <link>https://tuqmano.com/2019/01/21/geofacetear/</link>
       <pubDate>Mon, 21 Jan 2019 17:13:14 -0500</pubDate>
       
-      <guid>/2019/01/21/geofacetear/</guid>
+      <guid>https://tuqmano.com/2019/01/21/geofacetear/</guid>
       <description>En este posteo quiero mostrar brevemente el proyecto geofacet_AR, presentado en la primera edición de LatinR, tal como adelanté en el primer post. El mismo es una \(extensión^2\) (del proyecto de Ryan Hafen y, en otro nivel, de las grillas o facet de ggplot2).
 Me permito traducir el siguiente concepto de la nota introductoria del propio Hafen:
 “El paquete geofacet amplía ggplot2 de una manera que facilita la creación de visualizaciones geográficamente facetadas en R.</description>
@@ -137,10 +137,10 @@ Me permito traducir el siguiente concepto de la nota introductoria del propio Ha
     
     <item>
       <title>Bienvenidos a TuQmanoR</title>
-      <link>/2019/01/17/bienvenidos-a-tuqmanor/</link>
+      <link>https://tuqmano.com/2019/01/17/bienvenidos-a-tuqmanor/</link>
       <pubDate>Thu, 17 Jan 2019 21:13:14 -0500</pubDate>
       
-      <guid>/2019/01/17/bienvenidos-a-tuqmanor/</guid>
+      <guid>https://tuqmano.com/2019/01/17/bienvenidos-a-tuqmanor/</guid>
       <description>Este nuevo espacio TuQmano en la nube está pensado para compartir parte del aprendizaje y trabajo con datos. La idea principal es publicar análisis y visualizaciones desarrolados en R.
 Como primer ejemplo vale este mismo sitio. TuQmanoR está creado a partir de la librería blogdown, que combina diversos lenguages (md, RMd, git y HUGO entre otros) para crear sitios estáticos. Todo desde el mismo entorno de RStudio.
 Una de las mayores ventajas de trabajar con R (además de la gratuidad) es la gran comunidad de usuarios.</description>
@@ -148,10 +148,10 @@ Una de las mayores ventajas de trabajar con R (además de la gratuidad) es la gr
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>https://tuqmano.com/about/</link>
       <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://tuqmano.com/about/</guid>
       <description>Soy el @TuQmano, también conocido como Juan Pablo Ruiz Nicolini. Soy politólogo^2 de la Universidad Torcuato Di Tella. Trabajo con datos y visualizaciones. Me gustan las elecciones. Data Scientist (wip).
 Como politólogo mi trabajo se concentra en estudios electorales, partidos políticos y reforma política. En particular he trabajado en la evaluación del impacto político del cambio en la tecnología con la que se emiten los votos.
 Escribí el paquete {polAr}: *POLítica ARgentina usando R*.</description>
@@ -159,10 +159,10 @@ Escribí el paquete {polAr}: *POLítica ARgentina usando R*.</description>
     
     <item>
       <title>Talks</title>
-      <link>/talks/</link>
+      <link>https://tuqmano.com/talks/</link>
       <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
       
-      <guid>/talks/</guid>
+      <guid>https://tuqmano.com/talks/</guid>
       <description>2020 UADE: Elecciones 2020 - Colegio Electoral vs Voto Popular (con Javier Cachés) 💻 Data &amp;amp; Código |📊 Slides | ⌨️ Nota
 LatinR: {polAr} - Análisis de Datos Políicos de Argentina Abstract | 📊 Slides | 📦 {polAr} | ⌨️ blogpost | 📼 Video.
 LatinR: MinaR los discuRsos pResidenciales (con Camila Higa y Lucas Enrich) Abstract | 📊 Slides | ⌨️ blogpost | 📼 Video.
@@ -171,10 +171,10 @@ LatinR: #TuitómetroNacional: monitor de la conversación política en Argentina
     
     <item>
       <title>Teaching</title>
-      <link>/teaching/</link>
+      <link>https://tuqmano.com/teaching/</link>
       <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
       
-      <guid>/teaching/</guid>
+      <guid>https://tuqmano.com/teaching/</guid>
       <description>2020 Herramientas Cuantitativas para el Análisis Político [CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2020  
 -&amp;gt; https://tuqmano.github.io/MetodosCiPol/</description>
     </item>

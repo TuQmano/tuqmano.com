@@ -1,0 +1,17 @@
+---
+title: De {polAr} al 'polArverse'
+author: TuQmano
+date: '2021-06-05'
+slug: de-polar-al-polarverse
+categories: []
+tags:
+  - polAr
+  - R
+---
+
+Hace poco más de un año el 🤖 '@CRANberriesFeed' publicaba esto:
+
+```{r echo=FALSE, warning=F, eval=T}
+library(blogdown)
+blogdown::shortcode('tweet', '1261597845808975872')
+```
