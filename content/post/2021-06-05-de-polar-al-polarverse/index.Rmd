@@ -27,10 +27,7 @@ blogdown::shortcode('tweet', '1365667669995884547')
 
 [`{polAr}`](https://electorarg.github.io/polAr/) nació originalmente como un paquete que buscaba facilitar el acceso y herramientas para el análisis de datos electorales en Argentina. Con el tiempo se fueron integrando otros flujos de trabajo y fuentes de datos (geográficos, discursos presidenciales o votaciones legislativas), con un correlativo incremento de dependencias y dificultad de administrar cada vez más funciones. Si el debate en *LatinR* nos hizo pensar en la separación en múltiples paquetes como posibilidad, el archivado de **CRAN** nos dio la oportunidad de hacerlo.
 
-```{r echo=FALSE, warning=F, eval=T}
-
-knitr::include_graphics('https://github.com/PoliticaArgentina/data_warehouse/raw/master/hex/collage.png')
-```
+![](https://github.com/PoliticaArgentina/data_warehouse/raw/master/hex/collage.png){width="468"}
 
 #### 🔗 [Un Universo en *desarrollo*](https://github.com/PoliticaArgentina)
 
