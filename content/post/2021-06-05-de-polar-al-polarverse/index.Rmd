@@ -11,7 +11,43 @@ tags:
 
 Hace poco más de un año el 🤖 '@CRANberriesFeed' publicaba esto:
 
-```{r echo=FALSE, warning=F, eval=T}
+```{r echo=FALSE, warning=F, eval=F}
 library(blogdown)
 blogdown::shortcode('tweet', '1261597845808975872')
 ```
+
+Hace algunos meses nos dabamos cuenta que **CRAN** había decidido archivar `{polAr}`. Más allá del bajón inicial, y recordando la conversación sobre *qué decisión tomar cuándo un paquete crece mucho* en la [sesión de desarrollo de paquetes de la edición 2020 de *LatinR*,](https://youtu.be/UYvSv8StDa8?t=10872) ese cambio fue el puntapié para el ahora en pleno desarrollo `polArverse`
+
+```{r echo=FALSE, warning=F, eval=F}
+library(blogdown)
+blogdown::shortcode('tweet', '1365667669995884547')
+```
+
+## Un Universo de 📦s para la `Pol`ítica `Ar`gentina
+
+[`{polAr}`](https://electorarg.github.io/polAr/) nació originalmente como un paquete que buscaba facilitar el acceso y herramientas para el análisis de datos electorales en Argentina. Con el tiempo se fueron integrando otros flujos de trabajo y fuentes de datos (geográficos, discursos presidenciales o votaciones legislativas), con un correlativo incremento de dependencias y dificultad de administrar cada vez más funciones. Si el debate en *LatinR* nos hizo pensar en la separación en múltiples paquetes como posibilidad, el archivado de **CRAN** nos dio la oportunidad de hacerlo.
+
+```{r echo=FALSE, warning=F, eval=F}
+
+knitr::include_graphics('https://github.com/PoliticaArgentina/data_warehouse/raw/master/hex/collage.png')
+```
+
+#### 🔗 [Un Universo en *desarrollo*](https://github.com/PoliticaArgentina)
+
+Al momento `polArverse` está compuesto por 5 paquetes con distintos flujos de trabajo:\
+\
+👌🏽 `{opinAr}`: datos de opinión pública del *Indice de Confianza en el Gobierno* (UTDT)\
+\
+👌🏽 `{electorAr}`: datos electorales de Argentina (Fuente: Atlas Electoral de Andy Tow) \
+\
+👌🏽 `{legislAr}` :datos de votaciones en las cámaras legislativas de Argentina (Fuente: Década Votada de Andy Tow)\
+\
+👌🏽 `{geoAr}`: geometrías para mapear distritos (provincias, departamentos, radios cenales) y armar grillas como si fueran mapas (para usar con `geofacet`)\
+\
+🚧`{discursAr}` - en desarrollo: datos de discursos presidenciales (asamblea legislativas de inauguración de sesiones ordinarias y discursos de gestión)\
+\
+Otra decisión fue eliminar las funciones para visualización dentro de cada uno de los paquetes y preparar un paquete especifico con tal propósito para las distintas visualizaciones 🔜 `polArViz`
+
+------------------------------------------------------------------------
+
+Ya habiendo avanzado en la publicación en desarrollo de la mayoría de los proyectos, aprovecharemos los siguientes posteos para ir contando un poco más en detalle el detrás de escena de `polArverse` y mostrar con algo más de detalle cuales son las ideas detrás de cada uno de estos proyectos.

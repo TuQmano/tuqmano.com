@@ -1,15 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>polAr on TuQmanoR</title>
+    <title>Polar on TuQmanoR</title>
     <link>https://tuqmano.com/tags/polar/</link>
-    <description>Recent content in polAr on TuQmanoR</description>
+    <description>Recent content in Polar on TuQmanoR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tuqmano.com/tags/polar/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>De {polAr} al &#39;polArverse&#39;</title>
+      <link>https://tuqmano.com/2021/06/05/de-polar-al-polarverse/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://tuqmano.com/2021/06/05/de-polar-al-polarverse/</guid>
+      <description>Hace poco más de un año el 🤖 ‘@CRANberriesFeed’ publicaba esto:
+Hace algunos meses nos dabamos cuenta que CRAN había decidido archivar {polAr}. Más allá del bajón inicial, y recordando la conversación sobre qué decisión tomar cuándo un paquete crece mucho en la sesión de desarrollo de paquetes de la edición 2020 de LatinR, ese cambio fue el puntapié para el ahora en pleno desarrollo polArverse
+Un Universo de 📦s para la Política Argentina{polAr} nació originalmente como un paquete que buscaba facilitar el acceso y herramientas para el análisis de datos electorales en Argentina.</description>
+    </item>
     
     <item>
       <title>polaR on CRAN</title>
