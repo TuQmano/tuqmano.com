@@ -12,7 +12,7 @@ date: "2018-01-05T21:48:51-07:00"
 💻 [Data & Código](https://github.com/TuQmano/popular_vote/) |📊 [Slides](https://www.tuqmano.com/talks/popular_vote#1) | ⌨️ [Nota](https://github.com/TuQmano/popular_vote/)
 
 
-### **LatinR**: `{polAr}` - *Análisis de Datos Políicos de Argentina* 
+### **LatinR**: `{polAr}` - *Análisis de Datos Políticos de Argentina* 
 
 [Abstract](https://github.com/TuQmano/latinr2020/blob/master/rmd/polAr/polar.pdf) | 📊 [Slides](https://www.tuqmano.com/slides/polar_slides.html#1) |  📦 [{polAr}](https://electorarg.github.io/polAr/) | ⌨️ [blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | 📼 [Video](https://www.youtube.com/watch?v=V4xqUh6KCZs&list=PL9-E3cL2KgKkxsS3dkaFTvmh24kPpkE--&index=3).
 

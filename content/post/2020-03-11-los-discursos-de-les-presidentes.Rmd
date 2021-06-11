@@ -27,7 +27,7 @@ Todos los 1 de marzo, ambas Cámaras del Congreso se reúnen para dar comienzo a
 Los años pasan y los discursos cambian. No solo varía qué se dice, sino también cuánto se dice. A través de una serie de tiempo, es posible observar cómo cambia la duración del discurso de año a año. Para una mejor visualización, se le asignó a cada presidente un color y se abreviaron los nombres a sus iniciales[^3]. 
 
 ```{r ts, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/ts_freq_abs_discursos.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/ts_freq_abs_discursos.png")
 
 ```
 
@@ -41,7 +41,7 @@ Cuáles son las palabras qué más repiten les presidentes fue una de las primer
 
 
 ```{r wordcloud, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/comparisonwc2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/comparisonwc2.png")
 
 ```
 
@@ -55,7 +55,7 @@ En el discurso de este año se destacan mayormente "desarrollo", "deuda" y "fede
 En el siguiente gráfico se pueden comparar las palabras más repetidas por les presidentes excluyendo palabras muy frecuentes como artículos, preposiciones y otras.
 
 ```{r wc, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/word_freqv2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/word_freqv2.png")
 
 ```
 
@@ -63,7 +63,7 @@ include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts
 Otro punto interesante para analizar es entender cuáles son las palabras que son importantes en cada discurso. ¿Cómo hicimos esto? A través del cálculo de TF-IDF (term frequency-inverse term frequency) que consiste en otorgarle menos peso a aquellas palabras que son muy comunes y darle más peso a aquellas que son menos usadas a lo largo  de todos los discursos. 
 
 ```{r tf-idf, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/word_tf_idfv2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/word_tf_idfv2.png")
 
 ```
 
@@ -72,7 +72,7 @@ Entonces, a través de estos gráficos podemos ver qué palabras se destacan en 
 Decidimos hacer el mismo ejercicio, pero esta vez con bigramas (frecuencia de dos palabras consecutivas). En el gráfico de abajo se pueden visualizar los bigramas más frecuentes por discurso: 
 
 ```{r freq-bigram, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/bigram_freqv2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/bigram_freqv2.png")
 ```
 
 El contexto cambia año a año y los discursos también. Los bigramas más frecuentes no suelen repetirse ni siquiera a lo largo de un mismo período presidencial. Claro que hay algunas excepciones, por ejemplo, en los cuatro discursos de NK aparece "derechos humanos" entre el top 5 de bigramas: *"Un país con memoria, verdad y justicia tiene que comprometerse profundamente con la defensa de los derechos del hombre (...). Desde un punto al otro del espectro ideológico, la defensa de los derechos humanos debe constituir un compromiso nacional y racional."(2004)*  
@@ -80,7 +80,7 @@ El contexto cambia año a año y los discursos también. Los bigramas más frecu
 En el gráfico de abajo se pueden observar los bigramas calculados con TF-IDF:
 
 ```{r tf-idf-bigram, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/bigram_tf_idf.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/bigram_tf_idf.png")
 ```
 
 
@@ -92,7 +92,7 @@ Ya dijimos que cada presidente elige sus palabras y tiene su estilo, pero nos pr
 
 
 ```{r pca, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/pca_v2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/pca_v2.png")
 
 ```
 
@@ -113,12 +113,12 @@ Al explorar los datos, tanto a través de las frecuencias de palabras como del m
 
 
 ```{r politica, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/parallel_dot2.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/parallel_dot2.png")
 
 ```
 
 ```{r economia, echo=FALSE, fig.align='center', out.width="100%"}
-include_graphics("https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/parallel_dot.png")
+include_graphics("https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/parallel_dot.png")
 
 ```
 
