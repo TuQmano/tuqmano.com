@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TuQmanoR</title>
@@ -6,7 +6,7 @@
     <description>Recent content on TuQmanoR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jan 2018 21:48:51 -0700</lastBuildDate>
     
 	<atom:link href="https://tuqmano.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -175,7 +175,7 @@ Escribí el paquete {polAr}: *POLítica ARgentina usando R*.</description>
       
       <guid>https://tuqmano.com/talks/</guid>
       <description>2020 UADE: Elecciones 2020 - Colegio Electoral vs Voto Popular (con Javier Cachés) 💻 Data &amp;amp; Código |📊 Slides | ⌨️ Nota
-LatinR: {polAr} - Análisis de Datos Políicos de Argentina Abstract | 📊 Slides | 📦 {polAr} | ⌨️ blogpost | 📼 Video.
+LatinR: {polAr} - Análisis de Datos Políticos de Argentina Abstract | 📊 Slides | 📦 {polAr} | ⌨️ blogpost | 📼 Video.
 LatinR: MinaR los discuRsos pResidenciales (con Camila Higa y Lucas Enrich) Abstract | 📊 Slides | ⌨️ blogpost | 📼 Video.
 LatinR: #TuitómetroNacional: monitor de la conversación política en Argentina (con Camila Higa).</description>
     </item>
@@ -186,8 +186,8 @@ LatinR: #TuitómetroNacional: monitor de la conversación política en Argentina
       <pubDate>Fri, 05 Jan 2018 21:48:51 -0700</pubDate>
       
       <guid>https://tuqmano.com/teaching/</guid>
-      <description>2021 Instrumentos de Análisis Urbanos II [MU106] Maestría en Economía Urbana | Universidad Torcuato Di Tella | Jun - Nov 2021
-2020 Herramientas Cuantitativas para el Análisis Político [CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2020</description>
+      <description>2018 - 2021 Herramientas Cuantitativas para el Análisis Político [CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2020
+2021 Instrumentos de Análisis Urbanos II [MU106] Maestría en Economía Urbana | Universidad Torcuato Di Tella | Jun - Nov 2021</description>
     </item>
     
   </channel>

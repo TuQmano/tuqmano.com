@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <title>Los discursos de les presidentes - TuQmanoR</title>
@@ -83,28 +83,28 @@
 <p>Todos los 1 de marzo, ambas Cámaras del Congreso se reúnen para dar comienzo al año legislativo y cada año el presidente de turno encabeza el acto de Apertura. Los discursos<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> suelen girar en torno a los ejes de gobierno, las promesas y los objetivos del año, pero más allá del contenido, cada uno tiene un estilo personal marcado por el presidente. Entender qué dicen y cómo lo dicen nos motivó a hacer un análisis sobre los 37 discursos desde el retorno de la Democracia.</p>
 <p><strong>Duración de los discursos a través del tiempo</strong></p>
 <p>Los años pasan y los discursos cambian. No solo varía qué se dice, sino también cuánto se dice. A través de una serie de tiempo, es posible observar cómo cambia la duración del discurso de año a año. Para una mejor visualización, se le asignó a cada presidente un color y se abreviaron los nombres a sus iniciales<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/ts_freq_abs_discursos.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/ts_freq_abs_discursos.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>El promedio de cantidad de palabras utilizadas por discurso fue de 9880. Sin embargo, se observan diferencias marcadas entre presidentes. CSM, FDR, ED y MM se mantuvieron siempre muy por debajo del promedio, mientras que NK y CFK se mantuvieron cerca o lo superaron.</p>
 <p>Con 2846 palabras, el discurso de CSM en 1996 fue el más corto, mientras que con 26189 palabras en 2013, CFK se lleva el récord del más largo (más del doble que el promedio). Incluso, en ésta última, se observa una tendencia creciente a través de los años (excepto en 2014). Por último, el discurso de este año encabezado por AF tuvo la misma duración que el promedio, más largo que que los de su antecesor, pero aún por debajo del promedio de los de NK y CFK.</p>
 <hr />
 <p>Cuáles son las palabras qué más repiten les presidentes fue una de las primeras preguntas que comenzamos a hacernos. Una forma gráfica de explorarlo es a través de una nube de palabras comparativa en la que los términos que más veces se mencionan tienen mayor centralidad y son de mayor tamaño.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/comparisonwc2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/comparisonwc2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>En general, los términos más frecuentes suelen marcar cuáles son los ejes más importantes del discurso. Por ejemplo, la palabra que más resalta en RA es “democracia”.
 En el discurso de este año se destacan mayormente “desarrollo”, “deuda” y “federal”. Pero también aparecen palabras vinculadas a la cuestión de género que no aparecen frecuentemente en los discursos de sus antecesores: <em>“La situación de las mujeres gestantes en Argentina presenta aspectos diversos. Distintos son los desafíos que enfrenta la mujer que desea tener a su hijo de aquellas que asumen que deciden interrumpir su embarazo. Un Estado que cuida debe acompañar a todas las mujeres para que esos procesos se desarrollen accediendo plenamente al sistema de salud.”</em></p>
 <p><strong>Frecuencia de palabras</strong></p>
 <p>En el siguiente gráfico se pueden comparar las palabras más repetidas por les presidentes excluyendo palabras muy frecuentes como artículos, preposiciones y otras.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/word_freqv2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/word_freqv2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Otro punto interesante para analizar es entender cuáles son las palabras que son importantes en cada discurso. ¿Cómo hicimos esto? A través del cálculo de TF-IDF (term frequency-inverse term frequency) que consiste en otorgarle menos peso a aquellas palabras que son muy comunes y darle más peso a aquellas que son menos usadas a lo largo de todos los discursos.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/word_tf_idfv2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/word_tf_idfv2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Entonces, a través de estos gráficos podemos ver qué palabras se destacan en cada uno de los discursos. Por ejemplo, en el de AF se destaca “sostenible” y aparecen entre las destacadas “género” y “embarazo”, mientras que, en los discursos de MM, las palabras varían pero en los últimos tres años, entre las palabras más destacadas aparece alguna relacionada a obras (“cloacas”, “parques”, “puentes”).</p>
 <p>Decidimos hacer el mismo ejercicio, pero esta vez con bigramas (frecuencia de dos palabras consecutivas). En el gráfico de abajo se pueden visualizar los bigramas más frecuentes por discurso:</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/bigram_freqv2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/bigram_freqv2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>El contexto cambia año a año y los discursos también. Los bigramas más frecuentes no suelen repetirse ni siquiera a lo largo de un mismo período presidencial. Claro que hay algunas excepciones, por ejemplo, en los cuatro discursos de NK aparece “derechos humanos” entre el top 5 de bigramas: <em>“Un país con memoria, verdad y justicia tiene que comprometerse profundamente con la defensa de los derechos del hombre (…). Desde un punto al otro del espectro ideológico, la defensa de los derechos humanos debe constituir un compromiso nacional y racional.”(2004)</em></p>
 <p>En el gráfico de abajo se pueden observar los bigramas calculados con TF-IDF:</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/bigram_tf_idf.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/bigram_tf_idf.png" width="100%" style="display: block; margin: auto;" /></p>
 <p><strong>Semejanzas y diferencias</strong></p>
 <p>Ya dijimos que cada presidente elige sus palabras y tiene su estilo, pero nos propusimos ver qué tanto se acercan los discursos entre sí. Para esto realizamos un <em>Análisis de Componentes Principales</em> (PCA)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. La idea es que mediante esta técnica estadística, considerando la frecuencia de palabras, se puede ubicar cada uno de los discursos en un plano de acuerdo al contenido de los mismos.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/pca_v2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/pca_v2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Algunas observaciones preliminares del gráfico en relación a los discursos:</p>
 <p>• En general, los discursos por presidente se encuentran cercanos entre sí (a excepción del de 1998 de CSM y de los de FDR y ED).</p>
 <p>• Los de MM y de CFK se encuentran alejados del resto.</p>
@@ -112,8 +112,8 @@ En el discurso de este año se destacan mayormente “desarrollo”, “deuda”
 <p>• El de AF se posiciona más cerca de los de NK y, por lo tanto, alejado de sus antecesores inmediatos.</p>
 <hr />
 <p>Al explorar los datos, tanto a través de las frecuencias de palabras como del modelado de tópicos, dos grandes ejes parecen ser capaces de englobar la mayoría de los términos expresados en los discursos. Dada esta intuición e inspirados en un estudio de la Universidad de Berkeley<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> tomamos los primeros discursos de cada uno de los mandatos presidenciales para clasificar las palabras más frecuentes en cada una de estas categorías o “tópicos”.</p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/parallel_dot2.png" width="100%" style="display: block; margin: auto;" /></p>
-<p><img src="https://raw.githubusercontent.com/mentaComunicacion/data_posts/master/discursos_asamblea/parallel_dot.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/parallel_dot2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="https://raw.githubusercontent.com/TuQmano/tuqmano.com/master/static/figs/parallel_dot.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Si ponemos el foco sobre los términos de <em>política</em> utilizados más frecuentemente (representado por el tamaño de las etiquetas del lado derecho) se destacan “justicia”, “nación” y “pueblo” por sobre “libertad”, “derecho” y “diálogo”. Y al analizar las palabras relacionadas al eje <em>economía</em> resaltan “crecimiento” y “desarrollo” por sobre el resto.</p>
 <p>Otra manera de visualizar la información puede ser observar la frecuencia con que los distintos discursos utilizaron alguno de los términos de cada tópico. Ello está representado por el ancho de los flujos de colores. Así, por ejemplo, se observa que las intervenciones en el primer discurso de MM se restringen solo a tres de los términos: “derecho”, “diálogo” y “justicia” en el tópico <em>política</em>. O que las palabras más frecuentes de AF en el que refiere a <em>economía</em> fueron “deuda” y “desarrollo”.</p>
 <p>Por último, calculamos que porcentaje del discurso representa la sumatoria de las palabras de cada uno de los ejes (representados en los círculos que refieren a cada uno de ellos). Así, por ejemplo, se observa que los primeros discursos de FDR Y CSM fueron los que usaron más frecuentemente palabras vinculadas a política como proporción de sus intervenciones, mientras que el de MM fue el que tuvo la menor cantidad de palabras vinculadas a este tópico. Por otro lado, éste último es el que utilizó proporcionalmente más veces palabras relacionadas a economía, mientras que CSM fue el que menos las utilizó.</p>
