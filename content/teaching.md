@@ -8,7 +8,7 @@ date: "2018-01-05T21:48:51-07:00"
 
 ### [Herramientas Cuantitativas para el Análisis Político](https://tuqmano.github.io/CienciaDeDatosCiPol/)
 
-**[CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2020** 
+**[CP44] Maestría en Ciencia Política | UNIVERSIDAD TORCUATO DI TELLA | Sep - Nov 2021** 
 
 
 ## 2021
