@@ -7,7 +7,7 @@ date: "2018-01-05T21:48:51-07:00"
 
 ### **LatinR**: Divide y vencerás: de `{polAr}` al  *polArverse* 
 
-[Abstract](https://github.com/TuQmano/latinr2021/blob/master/divide_reinaras/divide_reinaras.pdf) | 📊  |  📦 [{polArverse}](https://github.com/politicaargentina/) | ⌨️ [blogpost](https://www.tuqmano.com/2020/05/22/empaquetar/) | 📼 [Video](https://www.youtube.com/watch?v=5Cq8Kz4SYdY) | 📼 [Sesión en Vivo](https://www.youtube.com/watch?v=BeUPj24L9WI&t=1026s) 
+[Abstract](https://github.com/TuQmano/latinr2021/blob/master/divide_reinaras/divide_reinaras.pdf) |   📦 [{polArverse}](https://github.com/politicaargentina/) | ⌨️ [blogpost](https://tuqmano.ar/2021/06/05/de-polar-al-polarverse/) | 📼 [Video](https://www.youtube.com/watch?v=5Cq8Kz4SYdY) | 📼 [Sesión en Vivo](https://www.youtube.com/watch?v=BeUPj24L9WI&t=1026s) 
 
 ## 2020
 
